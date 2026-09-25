@@ -1,0 +1,12 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import {Serie,Conteudo,classificar,criarContador} from '../js/modelo.js';
+import {buscarCatalogo} from '../js/api.js';
+import {youtubeId,urlIncorporacao} from '../js/video.js';
+import {validarPerfil} from '../js/ui.js';
+test('herança e compatibilidade usam todos os gêneros da série',()=>{const s=new Serie({id:'1',titulo:'Série',generos:['Drama','Crime','Comedy','Drama']});assert(s instanceof Conteudo);const r=s.calcularAfinidade(['Drama','Comedy']);assert.equal(r.percentual,2/3*100);assert.deepEqual(r.comuns,['Drama','Comedy']);assert.deepEqual(r.naoExplorados,['Crime']);assert.equal(r.classificacao,'Faixas pendentes');assert.equal(new Serie({generos:[]}).calcularAfinidade([]).percentual,0);});
+test('faixas somente quando configuradas explicitamente',()=>{assert.equal(classificar(80),'Faixas pendentes');assert.equal(classificar(80,{media:30,alta:70}),'Alta');assert.equal(classificar(40,{media:30,alta:70}),'Média');assert.equal(classificar(0,{media:30,alta:70}),'Baixa');});
+test('contador é fechado e perfis inválidos não passam',()=>{const next=criarContador();assert.equal(next(),1);assert.equal(next(),2);assert(!validarPerfil({nome:'A',idade:20,generosFavoritos:[]}));assert(validarPerfil({nome:'Ana',idade:20,generosFavoritos:['Drama']}));});
+test('API normaliza respostas e trata vazios',async()=>{const rows=await buscarCatalogo({fetcher:async()=>({ok:true,json:async()=>[{id:1,name:'Teste',genres:['Drama'],rating:{average:8}},{name:'Sem gêneros'}]})});assert.equal(rows.length,1);assert.equal(rows[0].id,'tvmaze-1');assert.deepEqual(await buscarCatalogo({fetcher:async()=>({ok:true,json:async()=>[]})}),[]);});
+test('API trata HTTP, formato e falha de rede',async()=>{await assert.rejects(buscarCatalogo({fetcher:async()=>({ok:false,status:503})}),/503/);await assert.rejects(buscarCatalogo({fetcher:async()=>({ok:true,json:async()=>({})})}),/formato/);await assert.rejects(buscarCatalogo({fetcher:async()=>{throw Error('offline')}}),/offline/);});
+test('YouTube valida domínio e preserva origem real',()=>{assert.equal(youtubeId('https://youtu.be/dQw4w9WgXcQ'),'dQw4w9WgXcQ');assert.equal(youtubeId('https://evil.test/watch?v=dQw4w9WgXcQ'),null);const url=new URL(urlIncorporacao('dQw4w9WgXcQ','http://localhost:8080'));assert.equal(url.searchParams.get('origin'),'http://localhost:8080');assert.equal(url.searchParams.get('enablejsapi'),'1');});

@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CineMatch — Encontre sua próxima série</title>
+
+    <link rel="icon" href="assets/favicon.png">
+    <link rel="stylesheet" href="css/style.css">
+
+    <!-- type="module" é obrigatório para suportar os imports em ES6 -->
+    <script type="module" src="js/app.js"></script>
+</head>
+
+<body>
+    <!-- Link de acessibilidade para navegação por teclado -->
+    <a class="skip" href="#content">Pular para o conteúdo</a>
+
+    <!-- Onde todo o conteúdo é renderizado dinamicamente pelo JavaScript -->
+    <div id="app"></div>
+
+    <!-- Janela modal nativa para trailers e avisos -->
+    <dialog id="modal" aria-label="Detalhes"></dialog>
+
+    <!-- Notificações rápidas na tela -->
+    <div id="toast" role="status" aria-live="polite"></div>
+
+    <!-- Botão flutuante de retorno ao topo -->
+    <button id="back-to-top" data-action="voltar-topo" aria-label="Voltar ao topo" hidden>
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="m6 15 6-6 6 6" />
+        </svg>
+    </button>
+
+    <noscript>Este projeto precisa de JavaScript ativado para funcionar.</noscript>
+</body>
+
+</html>
