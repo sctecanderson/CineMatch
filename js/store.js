@@ -57,6 +57,15 @@ export const Store = (() => {
   function cloneFiltrado(tipo) {
     return clonar(CINEMATCH_DATA.catalog.filter((item) => item.type === tipo));
   }
+  function completarComNovosDados(registros, tipo) {
+  const salvos = Array.isArray(registros) ? registros : [];
+  const idsSalvos = new Set(salvos.map((item) => item.id));
+  const novos = cloneFiltrado(tipo).filter(
+    (item) => !idsSalvos.has(item.id)
+  );
+
+  return [...salvos, ...novos];
+}
 
   /**
    * Retorna os registros de uma tabela local
@@ -77,8 +86,8 @@ export const Store = (() => {
    * Retorna o catálogo unificado: Filmes/Vídeos estáticos + Séries da TVMaze
    */
   function catalog() {
-    const filmes = list("movies");
-    const videos = list("videos");
+    const filmes = completarComNovosDados(list("movies"), "movie");
+    const videos = completarComNovosDados(list("videos"), "video");
     const catalogoCompleto = [...filmes, ...videos, ...seriesTVMaze];
 
     // Remove títulos inativos ou deletados

@@ -1,16 +1,12 @@
-/**
- * Extrai o ID único de 11 caracteres de um link do YouTube
- */
+
 export function youtubeId(url) {
   try {
     const urlObj = new URL(url);
 
-    // Formato curto: https://youtu.be/CODIGO
     if (urlObj.hostname === "youtu.be") {
       return urlObj.pathname.slice(1);
     }
 
-    // Formato tradicional: https://www.youtube.com/watch?v=CODIGO
     if (urlObj.hostname.includes("youtube.com")) {
       return urlObj.searchParams.get("v") || urlObj.pathname.split("/").pop();
     }

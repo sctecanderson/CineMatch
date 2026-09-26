@@ -86,6 +86,6 @@ export function criarContador() {
  */
 export function aoConcluirBusca(nomeUsuario, callback) {
   if (typeof callback === "function") {
-    callback(`Recomendações de ${nomeUsuario}`);
+   callback(`${nomeUsuario}, as melhores recomendações para você.`);
   }
 }

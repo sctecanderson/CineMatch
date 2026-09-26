@@ -2,6 +2,39 @@
 export const CINEMATCH_DATA = {
   catalog: [
     {
+      id: "downsday-2026",
+      name: "Vingadores Doownsday",
+      type: "movie",
+      image: "assets/cartazes/filmes/app-movie-doownsday.jpg",
+      trailer: "https://www.youtube.com/watch?v=ntOtyJwxcsM",
+      rating: "10",
+      language: "English",
+      duration: "02:45",
+      release: "2026-09-26",
+      genres: ["Action", "Comedy"],
+      access: "pay-per-view",
+      status: true,
+      description: "Vingadores: Doutor Destino é a primeira sequência de Vingadores na fase Multiverso e faz parte da fase 6 do Universo Cinematográfico Marvel. O quinto longa-metragem dos Vingadores, dirigido pelos irmãos Russo, ainda não possui uma sinopse oficial, mas foi revelado que Robert Downey Jr. irá interpretar o vilão Doutor Destino.",
+      video: "",
+    },
+    {
+      id: "lanternas",
+      name: "LANTERNAS",
+      type: "movie",
+      image: "assets/cartazes/filmes/app-movie-lanternas.jpg",
+      trailer: "https://www.youtube.com/watch?v=ngEWGqu66jI",
+      rating: "9.8",
+      language: "English",
+      duration: "02:35",
+      release: "2026-08-26",
+      genres: ["Action", "Historical"],
+      access: "pay-per-view",
+      status: true,
+      description: "Lanternas é a nova série focada no universo da DC e irá acompanhar as aventuras do Lanterna Verde, super-herói que, com a ajuda de um poderoso anel, consegue criar objetos plasmados complexos usando apenas a força da sua mente. Agora, Hal Jordan (Kyle Chandler) terá um novo recruta, o John Stewart (Aaron Pierre), e juntos, enquanto policiais intergalácticos, eles terão que sobreviver ao lado sombrio e misterioso da Terra ao mesmo tempo em que investigam um assassinato no coração dos Estados Unidos.",
+      video: "",
+    },
+    
+    {
       id: "the-house-of-last-respite",
       name: "The House of Last Respite",
       type: "movie",
@@ -2228,13 +2261,25 @@ export const CINEMATCH_DATA = {
   heroes: {
     home: [
       {
-        name: "Victory Vibes",
-        image: "assets/cartazes/banners/web-home-vibe.jpg",
+        name:"Vingadores Doownsday",
+        image: "assets/cartazes/banners/web-home-doomnsday.jpg",
+        label: "LANÇAMENTO NO CINEMATCH"
       },
+      {
+        name:"LANTERNAS",
+        image: "assets/cartazes/banners/web-home-lanternas.jpg",
+        label: "LANÇAMENTO NO CINEMATCH"
+      },
+      
       {
         name: "The Daring Player",
         image: "assets/cartazes/banners/web-home-player.jpg",
       },
+       {
+        name: "Game of Thrones",
+        image: "assets/cartazes/banners/web-show-game.jpg",
+      },
+      
     ],
     movies: [
       {
@@ -2250,11 +2295,7 @@ export const CINEMATCH_DATA = {
       {
         name: "Fear Factor",
         image: "assets/cartazes/banners/web-show-factor.jpg",
-      },
-      {
-        name: "Game of Thrones",
-        image: "assets/cartazes/banners/web-show-game.jpg",
-      },
+      },     
     ],
     videos: [
       {

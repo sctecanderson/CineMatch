@@ -30,6 +30,7 @@ let pararModalVideo = () => {};
 const ITENS_POR_PAGINA = 15;
 let paginaCatalogo = 1;
 let paginaMatch = 1;
+let buscaCatalogo = "";
 
 // Perfil e Dados da API
 let perfilAtual = null;
@@ -207,22 +208,83 @@ function renderizarHeader() {
     <header class="site-header">
       <button type="button" class="icon mobile-menu" data-action="toggle-menu" aria-label="Menu">☰</button>
       <a class="logo" href="#/home"><img src="assets/logo.png" alt="CineMatch"></a>
-      <nav class="main-nav">
-        <a href="#/home" class="${rotaAtual === "home" ? "active" : ""}">Início</a>
-        <a href="#/recomendacoes" class="${rotaAtual === "recomendacoes" ? "active" : ""}">Meu match</a>
-        <details class="dropdown">
-          <summary>Catálogo</summary>
-          <div class="dropdown-menu">
-            <a href="#/movies">Filmes</a>
-            <a href="#/tv-shows">Séries (TVMaze)</a>
-            <a href="#/watchlist">Minha lista</a>
-          </div>
-        </details>
-      </nav>
-      <div class="header-actions">
-        <button type="button" class="icon" data-action="ir-busca" aria-label="Buscar">🔍</button>
-        <button type="button" class="secondary" data-action="trocar-perfil">👤 ${nomeUsuario}</button>
-      </div>
+      <nav class="main-nav" aria-label="Navegação principal">
+  <a href="#/home" class="${rotaAtual === "home" ? "active" : ""}">
+    Início
+  </a>
+
+  <a
+    href="#/recomendacoes"
+    class="nav-match ${rotaAtual === "recomendacoes" ? "active" : ""}"
+  >
+    Meu match
+  </a>
+
+  <a href="#/movies" class="${rotaAtual === "movies" ? "active" : ""}">
+    Filmes
+  </a>
+
+  <a href="#/tv-shows" class="${rotaAtual === "tv-shows" ? "active" : ""}">
+    Séries
+  </a>
+</nav>
+
+<div class="header-actions">
+  <a
+    class="header-icon-link"
+    href="#/watchlist"
+    aria-label="Minha lista"
+    title="Minha lista"
+  >
+    <svg class="icon-svg" viewBox="0 0 24 24" aria-hidden="true">
+      <path d="M6 4.75A1.75 1.75 0 0 1 7.75 3h8.5A1.75 1.75 0 0 1 18 4.75V21l-6-3.8L6 21V4.75Z"></path>
+    </svg>
+  </a>
+  <form class="header-search" id="header-search-form" role="search">
+  <input
+    id="header-search-input"
+    type="search"
+    placeholder="Pesquisar título..."
+    aria-label="Pesquisar títulos"
+  >
+  <button
+    class="header-search-submit"
+    type="submit"
+    aria-label="Pesquisar"
+  >
+    <svg class="icon-svg" viewBox="0 0 24 24" aria-hidden="true">
+      <circle cx="11" cy="11" r="7"></circle>
+      <path d="m20 20-4-4"></path>
+    </svg>
+  </button>
+</form>
+
+  <button
+    type="button"
+    class="icon"
+    data-action="ir-busca"
+    aria-label="Buscar"
+    title="Buscar"
+  >
+    <svg class="icon-svg" viewBox="0 0 24 24" aria-hidden="true">
+      <circle cx="11" cy="11" r="7"></circle>
+      <path d="m20 20-4-4"></path>
+    </svg>
+  </button>
+
+  <button
+    type="button"
+    class="secondary profile-button"
+    data-action="trocar-perfil"
+    aria-label="Trocar perfil"
+  >
+    <svg class="icon-svg" viewBox="0 0 24 24" aria-hidden="true">
+      <circle cx="12" cy="8" r="4"></circle>
+      <path d="M4 21a8 8 0 0 1 16 0"></path>
+    </svg>
+    <span>${nomeUsuario}</span>
+  </button>
+</div>
     </header>
   `;
 }
@@ -230,23 +292,53 @@ function renderizarHeader() {
 function renderizarFooter() {
   return `
     <footer class="site-footer">
-      <div class="footer-grid">
-        <div>
-          <a class="logo" href="#/home"><img src="assets/logo.png" alt="CineMatch"></a>
-          <p>Seu próximo favorito começa com um match de gêneros.</p>
+      <div class="footer-container">
+        <div class="footer-grid">
+          <!-- Coluna 1: Logo e Descrição -->
+          <div class="footer-brand">
+            <a class="logo" href="#/home">
+              <img src="assets/logo.png" alt="CineMatch">
+            </a>
+            <p>Seu próximo favorito começa com um match. Recomendações personalizadas por gênero com dados da TVMaze.</p>
+          </div>
+
+          <!-- Coluna 2: Links verticais -->
+          <div class="footer-col">
+            <h3>Navegação</h3>
+            <div class="footer-links-list">
+              <a href="#/home">Início</a>
+              <a href="#/recomendacoes">Meu Match</a>
+              <a href="#/tv-shows">Séries (TVMaze)</a>
+              <a href="#/movies">Filmes</a>
+              <a href="#/watchlist">Minha Lista</a>
+            </div>
+          </div>
+
+          <!-- Coluna 3: Projeto e API -->
+          <div class="footer-col">
+            <h3>Sobre o Projeto</h3>
+            <div class="footer-links-list">
+              <p style="margin: 0; font-size: 0.88rem; line-height: 1.6;">Desenvolvido em HTML5, CSS3 e JavaScript modular.</p>
+              <a target="_blank" rel="noopener noreferrer" href="https://www.tvmaze.com/api">Dados via TVMaze API ↗</a>
+            </div>
+          </div>
         </div>
-        <div>
-          <h3>Explorar</h3>
-          <a href="#/tv-shows">Séries da TVMaze</a>
-          <a href="#/movies">Filmes</a>
-          <a href="#/watchlist">Minha lista</a>
-        </div>
-        <div>
-          <h3>Sobre</h3>
-          <p>Projeto acadêmico com JavaScript puro e TVMaze API.</p>
-        </div>
+
+        <!-- Créditos do final -->
+        <div class="footer-bottom">
+  <span>© ${new Date().getFullYear()} CineMatch · Todos os direitos reservados — Desenvolvido por: 
+    <a target="_blank" rel="noopener noreferrer" href="https://github.com/sctecanderson">
+      <strong class="perfil-red">Anderson Alves</strong>
+    </a>
+  </span>
+
+  <span>Projeto Acadêmico SCTEC (Módulo 1) ministrado pelo Prof. 
+    <a target="_blank" rel="noopener noreferrer" href="https://github.com/MatheusNadai">
+      <strong class="perfil-red">Matheus de Nadai</strong>
+    </a>.
+  </span>
+</div>
       </div>
-      <p class="copyright">© ${new Date().getFullYear()} CineMatch</p>
     </footer>
   `;
 }
@@ -255,34 +347,62 @@ function renderizarHero() {
   const destaques = CINEMATCH_DATA.heroes.home || [];
   if (!destaques.length) return "";
 
-  const slidesHTML = destaques.map((item, i) => `
-    <div class="hero-slide ${i === heroIndex ? "active" : ""}">
-      <img class="hero-bg" src="${item.image}" alt="${escaparHTML(item.name)}">
-      <div class="hero-content">
-        <span class="hero-eyebrow">EM DESTAQUE NO CINEMATCH</span>
-        <h1 class="hero-title">${escaparHTML(item.name)}</h1>
-        <p>Explore o catálogo e descubra novas séries para assistir.</p>
-        <div class="row">
-          <a class="button" href="#/detail/${escaparHTML(item.name.toLowerCase().replace(/ /g, '-'))}">Explorar título</a>
+  const slidesHTML = destaques.map((item, i) => {
+    // Busca dados no catálogo para puxar nota, idioma, etc.
+    const m = Store.catalog().find((c) => c.name.toLowerCase() === item.name.toLowerCase());
+    const idSlug = m?.id || item.name.toLowerCase().replace(/ /g, "-");
+    const naLista = Store.favourites().includes(idSlug);
+    const idioma = m?.language || "English";
+    const nota = m?.rating ? `<span>☆ ${m.rating}</span>` : "";
+
+    return `
+      <div class="hero-slide ${i === heroIndex ? "active" : ""}">
+      
+        <img class="hero-bg" src="${item.image}" alt="${escaparHTML(item.name)}">
+        <div class="hero-content">        
+          <span class="hero-eyebrow">${escaparHTML(item.label || "EM DESTAQUE NO CINEMATCH")}</span>
+          <h1 class="hero-title">${escaparHTML(item.name)}</h1>
+          <p>Uma nova história para descobrir. Explore o título e adicione à sua lista.</p>
+          <div class="metadata">
+            <span>${escaparHTML(idioma)}</span>
+            ${nota}
+          </div>
+
+          <div class="row" style="gap: 12px;">
+            <button type="button" class="icon circle" data-action="toggle-favorito" data-id="${idSlug}" aria-label="Minha lista">
+              ${naLista ? "✓" : "+"}
+            </button>
+            <a class="button" href="#/detail/${escaparHTML(idSlug)}">▶ Explorar título</a>
+          </div>
         </div>
       </div>
-    </div>
-  `).join("");
+    `;
+  }).join("");
 
   const botoesHTML = destaques.map((item, i) => `
     <button type="button" class="hero-menu-item ${i === heroIndex ? "active" : ""}" data-action="trocar-slide" data-index="${i}">
       <img src="${item.image}" alt="">
-      <span><small>0${i + 1}</small> ${escaparHTML(item.name)}</span>
+      <span>
+        <small>0${i + 1}</small>
+        ${escaparHTML(item.name)}
+      </span>
       <i class="hero-progress"></i>
     </button>
   `).join("");
 
   return `
     <section class="hero cinematic-hero">
-      <div class="hero-slides">${slidesHTML}</div>
+      <div class="hero-slides">${slidesHTML}</div>      
+     
+      <div class="hero-arrows">
+        <button type="button" data-action="hero-prev" aria-label="Anterior">‹</button>
+        <button type="button" data-action="hero-next" aria-label="Próximo">›</button>
+      </div>
+
+      <!-- botão Pausar -->
       <div class="hero-menu">
         ${botoesHTML}
-        <button type="button" class="hero-pause button ghost" data-action="pausar-hero">${heroPausado ? "Retomar" : "Pausar"}</button>
+        <button type="button" class="hero-pause" data-action="pausar-hero">${heroPausado ? "Retomar" : "Pausar"}</button>
       </div>
     </section>
   `;
@@ -293,10 +413,42 @@ function renderizarHero() {
    ============================================================ */
 function renderizarTelaCatalogo(tipo) {
   let titulos = Store.catalog();
-  if (tipo === "movies") titulos = titulos.filter((c) => c.type === "movie");
-  if (tipo === "tv-shows") titulos = titulos.filter((c) => c.type === "tvshow");
-  if (tipo === "watchlist") titulos = titulos.filter((c) => Store.favourites().includes(c.id));
+  let tituloPagina = "Catálogo de Filmes";
 
+  // Filtra por tipo de rota
+  if (tipo === "movies") {
+    titulos = titulos.filter((c) => c.type === "movie");
+    tituloPagina = "Filmes";
+  } else if (tipo === "tv-shows") {
+    titulos = titulos.filter((c) => c.type === "tvshow");
+    tituloPagina = "Séries (TVMaze)";
+  } else if (tipo === "watchlist") {
+    titulos = titulos.filter((c) => Store.favourites().includes(c.id));
+    tituloPagina = "Minha Lista";
+  } else if (tipo.startsWith("browse/genres/")) {
+    const generoBuscado = decodeURIComponent(tipo.replace("browse/genres/", "")).toLowerCase();
+    tituloPagina = `Gênero: ${nomeGenero(decodeURIComponent(tipo.replace("browse/genres/", "")))}`;
+    
+    titulos = titulos.filter((c) => {
+      return c.genres && c.genres.some((g) => {
+        return g.toLowerCase() === generoBuscado || nomeGenero(g).toLowerCase() === generoBuscado;
+      });
+    });
+  } else if (tipo.startsWith("browse/channels/")) {
+    const nomeCanal = decodeURIComponent(tipo.replace("browse/channels/", ""));
+    tituloPagina = `Canal: ${nomeCanal}`;
+  }
+
+  // Aplica a busca antes de calcular as páginas
+if (buscaCatalogo) {
+  const termo = buscaCatalogo.toLocaleLowerCase("pt-BR");
+
+  titulos = titulos.filter((item) =>
+    item.name.toLocaleLowerCase("pt-BR").includes(termo)
+  );
+}
+
+  // Paginação dos resultados
   const totalPaginas = Math.max(1, Math.ceil(titulos.length / ITENS_POR_PAGINA));
   paginaCatalogo = Math.min(paginaCatalogo, totalPaginas);
 
@@ -305,21 +457,45 @@ function renderizarTelaCatalogo(tipo) {
   const cards = visiveis.map((item) => renderizarCard(item)).join("");
   const paginacaoHTML = gerarBotoesPaginacao(paginaCatalogo, totalPaginas, "mudar-pagina-catalogo");
 
+  // Carrossel de navegação rápida para outros gêneros ou canais
+  const carrosselRodape = tipo.startsWith("browse/channels/")
+    ? renderizarColecao("Outros Canais", "channels", true)
+    : renderizarColecao("Explorar Outros Gêneros", "genres", false);
+
   return `
     <main class="page">
-      <h1>${tipo === "watchlist" ? "Minha Lista" : tipo === "tv-shows" ? "Séries (TVMaze)" : "Catálogo de Filmes"}</h1>
-      <div class="filterbar">
-        <input type="search" id="input-busca" placeholder="Buscar por título..." aria-label="Buscar">
-      </div>
-      <p class="muted">${titulos.length} títulos · Página ${paginaCatalogo} de ${totalPaginas}</p>
+      <h1>${escaparHTML(tituloPagina)}</h1>
+      <div class="catalog-search-wrap">
+  <input
+    type="search"
+    id="input-busca"
+    placeholder="Buscar por título..."
+    aria-label="Buscar"
+    value="${escaparHTML(buscaCatalogo)}"
+  >
+  <button
+    type="button"
+    id="limpar-busca"
+    class="catalog-search-clear"
+    aria-label="Limpar busca"
+    ${buscaCatalogo ? "" : "hidden"}
+  >×</button>
+</div>
+      <p class="muted">${titulos.length} títulos encontrados · Página ${paginaCatalogo} de ${totalPaginas}</p>
       <div id="grid-catalogo" class="catalog-grid">
-        ${cards || '<p class="empty">Nenhum título encontrado.</p>'}
+        ${cards || '<p class="empty">Nenhum título encontrado para este gênero.</p>'}
       </div>
       ${paginacaoHTML}
+
+      <!-- CARROSSEL DE OUTROS GÊNEROS / CANAIS NO FINAL DA PÁGINA -->
+      <div style="margin-top: 40px;">
+        ${carrosselRodape}
+      </div>
     </main>
   `;
 }
 
+// Tela de erro
 function renderizarTelaDetalhes(id) {
   const item = Store.catalog().find((c) => c.id === id);
   if (!item) {
@@ -328,33 +504,70 @@ function renderizarTelaDetalhes(id) {
 
   const jaFavorito = Store.favourites().includes(item.id);
 
+  // Botão de Trailer: se tiver trailer cadastrado toca no modal; se for TVMaze busca o trailer oficial no YouTube
+  const botaoTrailer = item.trailer
+    ? `<button type="button" class="button" data-action="assistir-trailer" data-id="${item.id}">▶ Assistir Trailer</button>`
+    : `<a class="button" target="_blank" rel="noopener noreferrer" href="https://www.youtube.com/results?search_query=${encodeURIComponent(item.name + " trailer oficial")}">▶ Ver Trailer no YouTube ↗</a>`;
+
+  // Link oficial para a ficha completa da série na TVMaze
+  const linkTVMaze = item.fonte
+    ? `<a class="button secondary" target="_blank" rel="noopener noreferrer" href="${item.fonte}">Ficha na TVMaze ↗</a>`
+    : "";
+
+  // Busca séries semelhantes com base nos mesmos gêneros
+  const semelhantes = Store.catalog()
+    .filter((c) => c.id !== item.id && c.genres?.some((g) => item.genres?.includes(g)))
+    .slice(0, 10);
+
   return `
-    <section class="hero detail-hero">
-      <img class="hero-bg" src="${escaparHTML(item.image)}" alt="${escaparHTML(item.name)}">
-      <div class="hero-content">
-        <span class="pill">${escaparHTML((item.type || "SÉRIE").toUpperCase())}</span>
-        <h1>${escaparHTML(item.name)}</h1>
-        <div class="metadata">
-          <span>Ano: ${escaparHTML(item.release?.slice(0, 4) || "Recente")}</span>
-          <span>${escaparHTML(item.duration || "Duração flexível")}</span>
-          <span>★ ${escaparHTML(item.rating || "Sem nota")}</span>
+    <main class="page detail-page">
+      <div class="detail-container">
+        <!-- Coluna da Esquerda: Cartaz com proporção real e nota -->
+        <div class="detail-poster-wrap">
+          <img class="detail-poster" src="${escaparHTML(item.image)}" alt="${escaparHTML(item.name)}">
+          ${item.rating ? `<span class="detail-rating">★ ${item.rating} / 10</span>` : ""}
         </div>
-        <div class="row wrap">
-          ${item.trailer ? `<button type="button" data-action="assistir-trailer" data-id="${item.id}">Assistir trailer</button>` : ""}
-          <button type="button" class="secondary" data-action="toggle-favorito" data-id="${item.id}">
-            ${jaFavorito ? "✓ Na minha lista" : "+ Adicionar à lista"}
-          </button>
+
+        <!-- Coluna da Direita: Dados completos e botões de ação -->
+        <div class="detail-info">
+          <div class="row wrap" style="gap: 8px;">
+            <span class="pill">${escaparHTML((item.type || "SÉRIE").toUpperCase())}</span>
+            ${item.language ? `<span class="pill">${escaparHTML(item.language)}</span>` : ""}
+            ${item.release ? `<span class="pill">${escaparHTML(item.release.slice(0, 4))}</span>` : ""}
+          </div>
+
+          <h1 class="detail-title">${escaparHTML(item.name)}</h1>
+
+          <div class="detail-genres">
+            ${(item.genres || []).map((g) => `<span class="genre-pill">${nomeGenero(g)}</span>`).join("")}
+          </div>
+
+          <div class="detail-actions">
+            ${botaoTrailer}
+            <button type="button" class="button secondary" data-action="toggle-favorito" data-id="${item.id}">
+              ${jaFavorito ? "✓ Na minha lista" : "+ Adicionar à lista"}
+            </button>
+            ${linkTVMaze}
+          </div>
+
+          <div class="detail-synopsis">
+            <h3>Sinopse</h3>
+            <p>${escaparHTML(item.description || "Sinopse em breve.")}</p>
+          </div>
+
+          <div class="detail-metadata-grid">
+            <div><strong>Duração média:</strong> ${escaparHTML(item.duration || "45 min")}</div>
+            <div><strong>Estreia:</strong> ${escaparHTML(item.release || "Não informada")}</div>
+            <div><strong>Idioma original:</strong> ${escaparHTML(item.language || "Inglês")}</div>
+          </div>
         </div>
       </div>
-    </section>
-    <main class="page detail-body">
-      <h2>Sinopse</h2>
-      <p>${escaparHTML(item.description || "Sinopse disponível no catálogo.")}</p>
-      <p><b>Gêneros:</b> ${item.genres ? item.genres.map(nomeGenero).join(", ") : "Geral"}</p>
+
+      <!-- Carrossel de Títulos Semelhantes no rodapé -->
+      ${renderizarCarrossel("Títulos Semelhantes", semelhantes, "tv-shows")}
     </main>
   `;
 }
-
 function renderizarTelaPerfil() {
   return `
     <main class="profile-page">
@@ -442,7 +655,7 @@ function renderizarTela() {
     `;
   } else if (rotaAtual.startsWith("detail/")) {
     conteudoHTML = renderizarTelaDetalhes(rotaAtual.replace("detail/", ""));
-  } else if (["movies", "tv-shows", "watchlist"].includes(rotaAtual)) {
+  } else if (["movies", "tv-shows", "watchlist"].includes(rotaAtual) || rotaAtual.startsWith("browse/")) {
     conteudoHTML = renderizarTelaCatalogo(rotaAtual);
   } else {
     conteudoHTML = `<main class="page"><h1>Página não encontrada</h1><a class="button" href="#/home">Voltar ao início</a></main>`;
@@ -606,7 +819,7 @@ function mostrarCarregamento(aoFinalizar) {
    ============================================================ */
   document.addEventListener("click", (evento) => {
   // 1. Intercepta cliques no Logo ou no link "Início" para tocar o GIF de carregamento
-  const linkHome = evento.target.closest('a[href="#/home"], a.logo');
+  const linkHome = evento.target.closest(' a.logo');
   if (linkHome) {
     evento.preventDefault();
     mostrarCarregamento(() => {
@@ -707,7 +920,41 @@ function mostrarCarregamento(aoFinalizar) {
       location.hash = "#/movies";
       setTimeout(() => document.querySelector("#input-busca")?.focus(), 150);
       break;
+      case "hero-prev":
+      trocarSlideHero(-1);
+      sincronizarHero();
+      break;
+
+    case "hero-next":
+      trocarSlideHero(1);
+      sincronizarHero();
+      break;
   }
+});
+
+document.addEventListener("submit", (evento) => {
+  const formulario = evento.target;
+
+  if (formulario.id !== "header-search-form") return;
+
+  evento.preventDefault();
+
+  const termo = formulario
+    .querySelector("#header-search-input")
+    .value.trim();
+
+  if (!termo) return;
+
+  location.hash = "#/movies";
+
+  setTimeout(() => {
+    const campoCatalogo = document.querySelector("#input-busca");
+
+    if (!campoCatalogo) return;
+
+    campoCatalogo.value = termo;
+    campoCatalogo.dispatchEvent(new Event("input", { bubbles: true }));
+  }, 150);
 });
 
 // Envio do Perfil
@@ -734,15 +981,24 @@ document.addEventListener("submit", (evento) => {
   carregarCatalogoTVMaze();
 });
 
-// Busca em Tempo Real
+// Busca da paginação
 document.addEventListener("input", (evento) => {
-  if (evento.target.id !== "input-busca") return;
-  const termo = evento.target.value.toLowerCase().trim();
-  const cards = document.querySelectorAll("#grid-catalogo .movie-card");
-  cards.forEach((card) => {
-    const nome = card.querySelector(".card-name")?.textContent.toLowerCase() || "";
-    card.style.display = nome.includes(termo) ? "" : "none";
-  });
+  const campo = evento.target;
+  if (campo.id !== "input-busca") return;
+
+  buscaCatalogo = campo.value.trim();
+  paginaCatalogo = 1;
+
+  const posicaoCursor = campo.selectionStart;
+
+  renderizarTela();
+
+  const novoCampo = document.querySelector("#input-busca");
+  novoCampo?.focus();
+
+  if (novoCampo && posicaoCursor !== null) {
+    novoCampo.setSelectionRange(posicaoCursor, posicaoCursor);
+  }
 });
 
 window.addEventListener("scroll", () => {
@@ -752,7 +1008,18 @@ window.addEventListener("scroll", () => {
 window.addEventListener("hashchange", () => {
   paginaCatalogo = 1;
   paginaMatch = 1;
+  buscaCatalogo = ""; // limpa a busca ao mudar de rota
   renderizarTela();
+  window.scrollTo({ top: 0, behavior: "smooth" }); 
+});
+document.addEventListener("click", (evento) => {
+  if (!evento.target.closest("#limpar-busca")) return;
+
+  buscaCatalogo = "";
+  paginaCatalogo = 1;
+  renderizarTela();
+
+  document.querySelector("#input-busca")?.focus();
 });
 
 /* ============================================================
