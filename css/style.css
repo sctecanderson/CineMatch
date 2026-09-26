@@ -457,7 +457,7 @@ details.dropdown summary { list-style: none; cursor: pointer; }
     text-overflow: ellipsis;
 }
 
-/* Cards de Canais (Circulares) */
+/* Cards de Canais  */
 .round-collection {
     flex: 0 0 150px;
     text-align: center;
@@ -476,7 +476,7 @@ details.dropdown summary { list-style: none; cursor: pointer; }
     margin: 10px 0 0;
 }
 
-/* Cards de Gêneros (Retangulares) */
+/* Cards de Gêneros */
 .landscape-card {
     flex: 0 0 230px;
     position: relative;
@@ -498,7 +498,7 @@ details.dropdown summary { list-style: none; cursor: pointer; }
     text-shadow: 0 2px 6px rgba(0, 0, 0, 0.8);
 }
 
-/* Cards do Top 10 com Número Gigante */
+/* Cards do Top 10 */
 .rank-card {
     flex: 0 0 240px;
     display: flex;
@@ -549,7 +549,7 @@ details.dropdown summary { list-style: none; cursor: pointer; }
     color: var(--muted);
 }
 
-/* Tela de Criação de Perfil com Imagem de Fundo (fundo-conta.jpg) */
+/* Tela de Criação de Perfil com Imagem de Fundo */
 .profile-page {
     min-height: 100vh;
     padding: 120px 6% 60px;
@@ -699,16 +699,41 @@ dialog::backdrop {
     transform: translate(-50%, 0);
 }
 
+/* Botão Voltar ao Topo com efeito pulsante */
 #back-to-top {
     position: fixed;
-    right: 25px; bottom: 25px;
-    width: 48px; height: 48px;
+    right: 65px;            
+    bottom: 55px;          
+    width: 50px;
+    height: 50px;
     border-radius: 50%;
-    padding: 12px;
-    z-index: 50;
+    background: var(--red);
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    z-index: 90;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 15px rgba(237, 0, 22, 0.4);
+    animation: pulsar-botao 2s infinite ease-in-out;
+    transition: transform 0.2s, background 0.2s;
 }
 
-/* Camada de carregamento inicial (com o GIF ajustado) */
+#back-to-top:hover {
+    background: var(--red-hover);
+    transform: scale(1.12);
+}
+
+#back-to-top svg {
+    width: 24px;
+    height: 24px;
+    fill: none;
+    stroke: #fff;
+    stroke-width: 2.5;
+}
+
+/* Carregamento inicial com GIF */
 .camada-carregamento {
     position: fixed;
     inset: 0;
@@ -733,9 +758,9 @@ dialog::backdrop {
    9. TELAS DE LOGIN E PAINEL ADMINISTRATIVO (DASHBOARD)
    ============================================================ */
 
-/* Fundo da tela de login com imagem (fundo-login.jpg) */
+/* Fundo da tela de login com imagem */
 .auth-page {
-    min-height: 100dvh;             /* Usa a altura real visível do celular */
+    min-height: 100dvh;   
     display: flex;
     align-items: center;
     justify-content: center;
@@ -752,7 +777,7 @@ dialog::backdrop {
 
 .auth-card {
     width: 100%;
-    max-width: 400px;  /* Largura ideal para caber em qualquer celular */
+    max-width: 400px;  /* Largura para qualquer celular */
     background: rgba(16, 25, 30, 0.94);
     backdrop-filter: blur(16px);
     border: 1px solid rgba(255, 255, 255, 0.1);
@@ -796,7 +821,7 @@ dialog::backdrop {
     color: var(--red);
 }
 
-/* Painel Administrativo com imagem de fundo sutil */
+/* Painel de login ADM com imagem de fundo */
 .admin-sidebar {
     position: fixed;
     left: 0; top: 0; bottom: 0;
@@ -941,11 +966,11 @@ th, td {
     .auth-page {
         padding: 24px 16px;
         min-height: 100dvh;
-        align-items: center; /* Centraliza sem empurrar o rodapé para fora */
+        align-items: center; 
     }
 
     .auth-card {
-        padding: 26px 20px; /* Reduz o padding para caber tudo na tela */
+        padding: 26px 20px;
         border-radius: 10px;
     }
 
@@ -959,6 +984,22 @@ th, td {
     }
 
     .auth-card form {
-        gap: 14px; /* Diminui o vão entre os campos no celular */
+        gap: 14px;
+    }
+}
+
+/* Animação de pulso contínuo do botao que sobe ao topo */
+@keyframes pulsar-botao {
+    0% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(237, 0, 22, 0.7);
+    }
+    70% {
+        transform: scale(1.08);
+        box-shadow: 0 0 0 14px rgba(237, 0, 22, 0);
+    }
+    100% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(237, 0, 22, 0);
     }
 }

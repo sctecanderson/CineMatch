@@ -175,6 +175,32 @@ function renderizarCarrossel(titulo, itens, rotaVerTodos = "movies", comRanking 
   `;
 }
 
+// Renderiza carrosséis de coleções (Canais circulares ou Gêneros horizontais)
+function renderizarColecao(titulo, tipo, circular = false) {
+  const itens = CINEMATCH_DATA.collections[tipo] || [];
+  if (!itens.length) return "";
+
+  const cardsHTML = itens.map((c) => `
+    <a class="${circular ? "round-collection" : "landscape-card"}" href="#/browse/${tipo}/${encodeURIComponent(c.name)}">
+      <img src="${c.image}" alt="${escaparHTML(c.name)}" loading="lazy">
+      ${circular ? `<p>${escaparHTML(c.name)}</p>` : `<span>${escaparHTML(c.name)}</span>`}
+    </a>
+  `).join("");
+
+  return `
+    <section class="shelf">
+      <div class="section-title">
+        <h2>${escaparHTML(titulo)}</h2>
+      </div>
+      <div class="carousel-shell">
+        <div class="carousel">${cardsHTML}</div>
+        <button type="button" class="carousel-arrow prev" data-action="scroll-left">‹</button>
+        <button type="button" class="carousel-arrow next" data-action="scroll-right">›</button>
+      </div>
+    </section>
+  `;
+}
+
 function renderizarHeader() {
   const nomeUsuario = perfilAtual?.nome ? escaparHTML(perfilAtual.nome) : "Criar perfil";
   return `
@@ -388,9 +414,17 @@ function renderizarTela() {
           </div>
           <div id="match-cards" class="carousel"></div>
         </section>
+
         ${renderizarCarrossel("Top 10 Destaques", filmes.slice(0, 10), "movies", true)}
         ${renderizarCarrossel("Séries em Destaque", series.slice(0, 10), "tv-shows")}
+        
+        <!-- CARROSSEL DE CANAIS (CIRCULARES) -->
+        ${renderizarColecao("Principais Canais", "channels", true)}
+
         ${renderizarCarrossel("Filmes Populares", filmes.slice(5, 15), "movies")}
+
+        <!-- CARROSSEL DE GÊNEROS (RETANGULARES) -->
+        ${renderizarColecao("Gêneros", "genres", false)}
       </main>
     `;
   } else if (rotaAtual === "recomendacoes") {
@@ -571,8 +605,8 @@ function mostrarCarregamento(aoFinalizar) {
    7. ESCUTA DE EVENTOS (addEventListener)
    ============================================================ */
   document.addEventListener("click", (evento) => {
-  // Intercepta cliques no Logo ou no link "Início"
-  const linkHome = evento.target.closest('a.logo');
+  // 1. Intercepta cliques no Logo ou no link "Início" para tocar o GIF de carregamento
+  const linkHome = evento.target.closest('a[href="#/home"], a.logo');
   if (linkHome) {
     evento.preventDefault();
     mostrarCarregamento(() => {
@@ -583,10 +617,36 @@ function mostrarCarregamento(aoFinalizar) {
     return;
   }
 
+  // 2. Captura elementos com data-action
   const elemento = evento.target.closest("[data-action]");
-  if (!elemento) return; 
+  if (!elemento) return;
+
+  const acao = elemento.dataset.action;
+  const id = elemento.dataset.id;
 
   switch (acao) {
+    // Paginação do Catálogo (Filmes e Séries da TVMaze)
+    case "mudar-pagina-catalogo": {
+      const novaPagina = Number(elemento.dataset.page);
+      if (!isNaN(novaPagina) && novaPagina >= 1) {
+        paginaCatalogo = novaPagina;
+        renderizarTela();
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }
+      break;
+    }
+
+    // Paginação das Recomendações (Meu match)
+    case "mudar-pagina-match": {
+      const novaPagina = Number(elemento.dataset.page);
+      if (!isNaN(novaPagina) && novaPagina >= 1) {
+        paginaMatch = novaPagina;
+        renderizarTela();
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }
+      break;
+    }
+
     case "fechar-modal":
       fecharModal();
       break;
@@ -647,26 +707,6 @@ function mostrarCarregamento(aoFinalizar) {
       location.hash = "#/movies";
       setTimeout(() => document.querySelector("#input-busca")?.focus(), 150);
       break;
-
-    case "mudar-pagina-catalogo": {
-      const p = Number(elemento.dataset.page);
-      if (!isNaN(p) && p >= 1) {
-        paginaCatalogo = p;
-        renderizarTela();
-        window.scrollTo({ top: 0, behavior: "smooth" });
-      }
-      break;
-    }
-
-    case "mudar-pagina-match": {
-      const p = Number(elemento.dataset.page);
-      if (!isNaN(p) && p >= 1) {
-        paginaMatch = p;
-        renderizarTela();
-        window.scrollTo({ top: 0, behavior: "smooth" });
-      }
-      break;
-    }
   }
 });
 
