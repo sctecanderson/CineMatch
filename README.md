@@ -146,10 +146,6 @@ A aplicação também pode ser acessada pelos atalhos abaixo depois que o site e
 | Minha lista | `index.html#/watchlist` |
 | Painel | `admin.html#/admin/dashboard` |
 
-## Painel de demonstração
-<img src="assets/readme/tela-dashboard.jpg" alt="Tela de Dashboard do CineMatch" width="70%">
-
-O painel administrativo é uma interface local para demonstrar navegação e operações de cadastro. Os dados ficam neste navegador. Ele **não** está conectado ao painel Laravel de referência, a um banco de dados, nem a um sistema de autenticação real. Use o botão de entrada de demonstração na tela de login administrativo.
 
 ## API e atribuição
 
