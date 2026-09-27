@@ -17,7 +17,7 @@
 
 ---
 
-## 📌 Links de Entrega (AVA)
+<h2align="center">## 📌 Links de Entrega (AVA)</h2>
 
 * 🔗 **Repositório GitHub:**  [Acesse o CINEMATCH no seu Navegador](https://sctecanderson.github.io/CineMatch/)
 * 📋 **Quadro Kanban (Trello):** [Acesse o Quadro do Projeto](https://trello.com/b/xFGqs6B4/cinematch-projeto-web) 
@@ -32,10 +32,10 @@ O **CineMatch Web** é a evolução prática do motor de recomendação desenvol
 A aplicação web coleta o perfil da pessoa usuária (nome, idade e gêneros favoritos) através de um formulário interativo, persiste essas preferências no navegador via `localStorage` e consulta o catálogo em tempo real da **TVMaze API**. A partir desses dados, a aplicação calcula o índice de compatibilidade, trata os dados com métodos modernos de array e Programação Orientada a Objetos (POO), e renderiza uma interface cinematográfica, fluida e responsiva.
 
 ---
-
-## 📸 Telas do Projeto
-
-<table>
+<div align="center">
+<h2> 📸 Telas do Projeto</h2>
+ </div>
+<table align="center">
   <tr>
     <td><img src="assets/readme/tela-login.jpg" alt="Tela de criação de perfil" width="150"></td>
     <td><img src="assets/readme/tela-home.jpg" alt="Página inicial" width="150"></td>
@@ -129,5 +129,6 @@ cinematch-web/
 ├── package.json              # Metadados do projeto e scripts npm
 ├── .gitignore                # Arquivos ignorados pelo Git (node_modules, etc.)
 └── README.md                 # Documentação completa do projeto
+```
 
-> 📖 Para instruções detalhadas de configuração, comandos e mapa de rotas, consulte o [README_INSTALACAO.md](README_INSTALACAO.md).
+> 📖 Para instruções detalhadas, consulte o [guia de instalação](./README_INSTALACAO.md).
