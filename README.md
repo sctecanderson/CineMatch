@@ -1,175 +1,124 @@
 <div align="center">
-  <img src="assets/readme/logo-cinematch.png" alt="Logo CineMatch" width="430">
+  <img src="assets/logo.png" alt="Logo CineMatch" width="380">
 
-  <h1>CineMatch</h1>
-  <p><strong>Descubra séries que combinam com você.</strong></p>
-  <p>Um projeto web de recomendação de séries por afinidade de gêneros, feito com HTML, CSS e JavaScript puro.</p>
+  <h1>CineMatch Web</h1>
+  <p><strong>Recomendação de Séries em Tempo Real com TVMaze API</strong></p>
+  <p>Projeto Avaliativo Final do Módulo 01 — Formação Mobile React Native (SCTEC / SESI SENAI)<br>
+  Ministrado pelo <strong>Prof. Matheus de Nadai</strong></p>
 
   <p>
-    <img alt="HTML5" src="https://img.shields.io/badge/HTML5-estrutura-E34F26?logo=html5&logoColor=white">
-    <img alt="CSS3" src="https://img.shields.io/badge/CSS3-Flexbox-1572B6?logo=css3&logoColor=white">
-    <img alt="JavaScript" src="https://img.shields.io/badge/JavaScript-ES%20Modules-F7DF1E?logo=javascript&logoColor=111">
-    <img alt="TVMaze" src="https://img.shields.io/badge/API-TVMaze-7B2CBF">
+    <img alt="HTML5" src="https://img.shields.io/badge/HTML5-Semântico%20%26%20Acessível-E34F26?logo=html5&logoColor=white">
+    <img alt="CSS3" src="https://img.shields.io/badge/CSS3-Flexbox%20%26%20Mobile--First-1572B6?logo=css3&logoColor=white">
+    <img alt="JavaScript" src="https://img.shields.io/badge/JavaScript-ES%20Modules%20(ES6+)-F7DF1E?logo=javascript&logoColor=111">
+    <img alt="API" src="https://img.shields.io/badge/API-TVMaze-7B2CBF">
+    <img alt="Node.js" src="https://img.shields.io/badge/Ambiente-Node.js%20%26%20npm-339933?logo=node.js&logoColor=white">
   </p>
 </div>
 
 ---
 
-## Sobre o projeto
+## 📌 Links Obrigatórios de Entrega (AVA)
 
-O CineMatch ajuda a descobrir séries a partir dos gêneros favoritos de cada pessoa. Na primeira visita, o usuário cria um perfil simples. O site busca séries na API pública da TVMaze, calcula a compatibilidade entre os gêneros escolhidos e os gêneros de cada série e apresenta recomendações.
-
-O projeto foi desenvolvido como aplicação de front end e material de estudo. Os dados do perfil e da lista ficam no navegador; não há servidor próprio nem conta autenticada.
-
-## Telas do projeto
-
-<div align="center">
-  <img src="assets/readme/tela-login.jpg" alt="Tela de login de demonstração do CineMatch" width="48%">
-  <img src="assets/readme/tela-perfil.jpg" alt="Tela de criação de perfil e seleção de gêneros" width="48%">
-</div>
-
-<p align="center"><em>Login demonstrativo e criação de perfil.</em></p>
-
-## Funcionalidades
-
-- Perfil com nome, idade e seleção de gêneros favoritos.
-- Preferências guardadas localmente no navegador com `localStorage`.
-- Catálogo de séries obtido da API TVMaze.
-- Recomendações ordenadas por compatibilidade e nota.
-- Exibição dos gêneros em comum e dos gêneros que a pessoa ainda pode explorar.
-- Estados de carregamento, catálogo vazio, erro e nova tentativa da consulta.
-- Página inicial com banners rotativos, carrosséis e navegação para catálogo.
-- Prévia dos títulos, lista de favoritos e botão para voltar ao topo.
-- Player de trailers do YouTube quando existe um link e a incorporação está autorizada.
-- Painel administrativo de demonstração com operações locais no navegador.
-- Layout responsivo, navegação por teclado e respeito à preferência de movimento reduzido.
-
-## Como funciona a compatibilidade
-
-A porcentagem é calculada com base nos gêneros únicos de cada série:
-
-```text
-compatibilidade = (gêneros da série que também estão no perfil / total de gêneros da série) × 100
-```
-
-Por exemplo, se uma série tem quatro gêneros e dois deles estão entre os favoritos, sua compatibilidade é `50%`.
-
-**Configuração ainda necessária:** o guia do projeto não informa os limites que definem compatibilidade “Alta”, “Média” e “Baixa”. Por isso, os limites `media` e `alta` estão como `null` em `js/config.js`, e a interface informa “Faixas pendentes”. A porcentagem continua sendo calculada. Para completar essa classificação, substitua esses valores pelos limites do código original do CineMatch.
-
-## Tecnologias
-
-| Tecnologia | Uso no projeto |
-|---|---|
-| HTML5 | Estrutura das páginas e elementos acessíveis. |
-| CSS3 com Flexbox | Estilos, responsividade, carrosséis e animações. |
-| JavaScript moderno | Interações, navegação, validação e renderização da interface. |
-| ES Modules | Organização do JavaScript com `import` e `export`. |
-| Fetch API | Consulta assíncrona ao catálogo da TVMaze. |
-| `localStorage` | Armazenamento local do perfil, favoritos e dados de demonstração. |
-
-Não é necessário React, TypeScript ou um processo de compilação para executar este pacote. O servidor local é usado porque módulos do navegador e integrações externas precisam ser servidos por HTTP.
-
-## Executar localmente
-
-É necessário ter Node.js e npm instalados.
-
-```bash
-# 1. Instale as dependências de desenvolvimento
-npm install
-
-# 2. Inicie o servidor local
-npm start
-```
-
-Abra **http://localhost:8080** no navegador. Também é possível usar a extensão Live Server do VS Code. Não abra `index.html` diretamente com duplo clique: a aplicação usa módulos JavaScript.
-
-Para executar os testes automatizados:
-
-```bash
-npm test
-```
-
-## Estrutura do projeto
-
-```text
-cinematch/
-├── assets/
-│   ├── favicon.svg
-│   └── readme/               # Logo e capturas usadas neste README
-├── css/
-│   └── style.css             # Estilos e layouts Flexbox
-├── docs/
-│   ├── MAPEAMENTO.md
-│   ├── REQUISITOS.md
-│   └── TESTES.md
-├── js/
-│   ├── app.js                # Inicialização, rotas, eventos e páginas
-│   ├── api.js                # Consulta e normalização dos dados TVMaze
-│   ├── config.js             # API, temporização e limites de compatibilidade
-│   ├── data.js               # Dados demonstrativos e conteúdo de referência
-│   ├── modelo.js             # Classes e cálculo de afinidade
-│   ├── store.js              # Persistência e operações locais
-│   ├── ui.js                 # Validação e criação de elementos da interface
-│   └── video.js              # Tratamento dos players
-├── tests/
-│   └── core.test.js
-├── index.html
-├── package.json
-└── README.md
-```
-
-## Organização da aplicação
-
-```mermaid
-flowchart LR
-    A[HTML] --> B[app.js]
-    B --> C[api.js]
-    B --> D[modelo.js]
-    B --> E[ui.js]
-    B --> F[store.js]
-    B --> G[video.js]
-    C --> H[API TVMaze]
-    D --> I[Compatibilidade]
-    F --> J[localStorage]
-```
-
-## Navegação principal
-
-A aplicação também pode ser acessada pelos atalhos abaixo depois que o site estiver rodando:
-
-| Área | Caminho |
-|---|---|
-| Início | `index.html#/home` |
-| Meu match | `index.html#/recomendacoes` |
-| Filmes | `index.html#/movies` |
-| Séries TVMaze | `index.html#/tv-shows` |
-| Minha lista | `index.html#/watchlist` |
-| Painel | `admin.html#/admin/dashboard` |
-
-
-## API e atribuição
-
-O catálogo usa a [API da TVMaze](https://www.tvmaze.com/api). A consulta depende de conexão com a internet e da disponibilidade do serviço. Os dados são atribuídos à TVMaze e estão sujeitos à licença indicada pelo serviço, incluindo CC BY-SA.
-
-Pôsteres, banners e trailers são carregados de serviços externos quando disponíveis. A reprodução de trailers depende das permissões de incorporação definidas por quem publicou cada vídeo. Este projeto não disponibiliza filmes completos.
-
-## Limitações conhecidas
-
-- Perfil, favoritos e painel são locais ao navegador e não sincronizam entre dispositivos.
-- Login, cadastro e redefinição de senha são telas de demonstração; não criam contas reais.
-- Os limites das classificações Alta/Média/Baixa aguardam os valores do código original.
-- Disponibilidade de imagens e trailers depende de serviços externos.
-- O projeto não reproduz nem inclui o backend, a autenticação ou os serviços privados do Streamit Laravel.
-- Verifique os direitos de uso dos materiais visuais externos antes de publicar ou distribuir uma versão pública.
-
-## Materiais adicionais
-
-- [Requisitos e relação com o guia acadêmico](docs/REQUISITOS.md)
-- [Escopo dos testes e verificações](docs/TESTES.md)
-- [Mapa de navegação](docs/MAPEAMENTO.md)
+* 🔗 **Repositório GitHub:** `https://github.com/sctecanderson/cinematch-web`
+* 📋 **Quadro Kanban (Trello):** [Acesse o Quadro do Projeto](https://trello.com/...) *(insira o link público do seu Trello)*
+* 🎥 **Vídeo de Apresentação (Até 7 min):** [Assista à Demonstração no YouTube / Google Drive](https://...) *(insira o link do vídeo)*
 
 ---
 
+## 🎯 Sobre o Projeto
+
+O **CineMatch Web** é a evolução prática do motor de recomendação desenvolvido inicialmente via terminal no início do módulo. A aplicação foi concebida para resolver o problema da sobrecarga de escolhas em plataformas de streaming, conectando a pessoa usuária a conteúdos que realmente combinam com seus gostos pessoais.
+
+A aplicação web coleta o perfil da pessoa usuária (nome, idade e gêneros favoritos) através de um formulário interativo, persiste essas preferências no navegador via `localStorage` e consulta o catálogo em tempo real da **TVMaze API**. A partir desses dados, a aplicação calcula o índice de compatibilidade, trata os dados com métodos modernos de array e Programação Orientada a Objetos (POO), e renderiza uma interface cinematográfica, fluida e responsiva.
+
+---
+
+## 📸 Telas do Projeto
+
 <div align="center">
-  <sub>CineMatch · Projeto acadêmico de recomendação de séries</sub>
+  <img src="assets/fundo-conta.jpg" alt="Tela de criação de perfil e seleção de gêneros" width="48%">
+  <img src="assets/cartazes/banners/web-home-doomnsday.jpg" alt="Página inicial com catálogo e recomendações" width="48%">
 </div>
+
+<p align="center"><em>Interface com tela de criação de perfil personalizada e catálogo cinematográfico.</em></p>
+
+---
+
+## ✨ Funcionalidades Principais
+
+* **Perfil Personalizado (RF02 e RF03):** Coleta nome, idade e preferências por checkboxes, persistindo no navegador via `localStorage` com tratamento de visitas recorrentes e opção de troca de perfil.
+* **Consumo em Tempo Real da TVMaze API (RF04):** Requisição assíncrona com `fetch` e `async/await`, estruturada dentro de `try/catch` com tratamento dos 3 estados: **carregando**, **vazio** e **erro**.
+* **Tratamento de Dados com Métodos de Array (RF05):** Filtragem, ordenação e mapeamento utilizando amplamente `filter()`, `map()`, `sort()`, `slice()` e `some()`.
+* **Motor de Afinidade em POO (RF06 e RF07):** Classes `Conteudo` e `Serie` com herança e uso de `this`, calculando a porcentagem exata de afinidade e separando gêneros em comum de gêneros não explorados.
+* **Classificação por Faixas de Afinidade:** Classificação automática em **Alta** (≥ 80%), **Média** (≥ 50%) e **Baixa** (< 50%) com badges visuais.
+* **Controle por Closures e Callbacks (RF10 e RF11):** Função closure mantendo o contador de recálculos/consultas na sessão exibido na interface, e callback disparado ao concluir a busca de dados.
+* **Navegação SPA Fluida e Histórico:** Roteamento baseado em hash (`#/home`, `#/recomendacoes`, `#/movies`, `#/tv-shows`, `#/watchlist`, `#/detail/:id`).
+* **Interatividade & Multimídia (RF12):** Hero banner com rotação automática via `setInterval`, controle de pausa/retomada, modal nativo (`<dialog>`) com player de trailer, paginação dinâmica e busca instantânea com botão limpar.
+* **Acessibilidade e SEO (RF01 e RF13):** Landmarks semânticos (`<header>`, `<main>`, `<section>`, `<article>`, `<footer>`), link skip para navegação por teclado, rótulos associados aos campos (`label for`), contraste adequado e meta tags Open Graph.
+
+---
+
+## 🧮 Como Funciona o Cálculo de Afinidade (RF07)
+
+A porcentagem de match entre o perfil da pessoa usuária e cada série do catálogo segue a fórmula:
+
+$$\text{Compatibilidade (\%)} = \left( \frac{\text{Gêneros da Série em Comum com o Perfil}}{\text{Total de Gêneros da Série}} \right) \times 100$$
+
+### Faixas de Classificação (`js/config.js`):
+* 🟢 **Alta Afinidade:** Compatibilidade $\ge 80\%$
+* 🟡 **Média Afinidade:** Compatibilidade $\ge 50\%$ e $< 80\%$
+* 🔴 **Baixa Afinidade:** Compatibilidade $< 50\%$
+
+Além do percentual, o motor analisa e renderiza no card quais foram os **gêneros em comum** e quais são os **gêneros não explorados** pela pessoa usuária.
+
+---
+
+## 📚 Fundamentação Técnica e Conceitos do Módulo (RF14 e Critérios de Avaliação)
+
+### 1. Diferença entre CommonJS e ES Modules (ESM) — RF14
+* **CommonJS (`require` / `module.exports`):** Foi o padrão adotado na primeira versão de terminal do CineMatch. Funciona de maneira síncrona e em tempo de execução no Node.js, sendo inadequado para o ecossistema moderno do navegador sem a intervenção de ferramentas de build complexas.
+* **ES Modules (`import` / `export`):** Padrão oficial introduzido a partir do ES6. Opera de forma estática e assíncrona, permitindo carregamento sob demanda através do navegador com `<script type="module">`. No CineMatch Web, o ESM permitiu modularizar a aplicação com responsabilidades estritas (`api.js`, `modelo.js`, `store.js`, `ui.js`, `video.js`, `config.js` e `app.js`), promovendo alto desacoplamento e manutenibilidade sem dependência de bundlers externos.
+
+### 2. Escopo e Escolha de Declaração de Variáveis (`const` e `let` vs `var`)
+Neste projeto foi adotado o padrão moderno de escopo de bloco, com **abolição total do `var`**:
+* **`const`:** Utilizado como primeira escolha para todas as declarações cujas referências não devem mudar: seletores do DOM, imports de módulos, instâncias de classes, arrays imutáveis e configurações globais. Previne mutações de referência e reatribuições acidentais.
+* **`let`:** Utilizado estritamente onde o estado da aplicação necessita de reatribuição ao longo do ciclo de vida: controle de paginação (`paginaCatalogo`, `paginaMatch`), índice do banner rotativo (`heroIndex`), estado da requisição e dados de busca.
+* **Vantagem direta:** Eliminação do risco de vazamento de escopo por içamento (*hoisting*) do `var`, garantindo que variáveis existam somente dentro do bloco (`{ ... }`) onde foram criadas.
+
+---
+
+## 🛠️ Tecnologias Utilizadas
+
+| Tecnologia | Finalidade no Projeto |
+|---|---|
+| **HTML5 Semântico** | Marcação estrutural com landmarks, atributos ARIA, SEO on-page e Open Graph. |
+| **CSS3 & Flexbox** | Estilização mobile-first, grid de cards responsivo, animações e media queries centralizadas. |
+| **JavaScript ES6+** | Lógica de programação funcional, POO (classes e herança), closures e callbacks. |
+| **Fetch API & Promises** | Consumo assíncrono do catálogo de shows da TVMaze API com tratamento de erros. |
+| **Web Storage (`localStorage`)** | Persistência local do perfil do usuário e da lista de favoritos com serialização JSON. |
+| **Node.js & npm** | Gerenciamento do pacote de desenvolvimento para execução local com servidor HTTP. |
+
+---
+
+## 📁 Estrutura de Arquivos
+
+```text
+cinematch-web/
+├── assets/                   # Pôsteres, banners, ícones e logotipo
+├── css/
+│   └── style.css             # Folha de estilos unificada (Flexbox + Media Queries)
+├── js/
+│   ├── api.js                # Requisição HTTP e normalização da TVMaze API
+│   ├── app.js                # Ponto de entrada (controlador, rotas, eventos e DOM)
+│   ├── config.js             # Constantes, URLs de endpoints e limites de afinidade
+│   ├── data.js               # Catálogo base estático, canais e coleções
+│   ├── modelo.js             # Classes Conteudo e Serie, herança e closures
+│   ├── store.js              # Camada de persistência local e gestão do catálogo
+│   ├── ui.js                 # Fábrica de componentes visuais e validação de perfil
+│   └── video.js              # Utilitário de montagem do player de trailer
+├── index.html                # Ponto de entrada da aplicação web
+├── package.json              # Metadados do projeto e scripts npm
+├── .gitignore                # Arquivos ignorados pelo Git (node_modules, etc.)
+└── README.md                 # Documentação completa do projeto
+
+> 📖 Para instruções detalhadas de configuração, comandos e mapa de rotas, consulte o [README_INSTALACAO.md](README_INSTALACAO.md).

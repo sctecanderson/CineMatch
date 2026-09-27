@@ -486,8 +486,7 @@ if (buscaCatalogo) {
         ${cards || '<p class="empty">Nenhum título encontrado para este gênero.</p>'}
       </div>
       ${paginacaoHTML}
-
-      <!-- CARROSSEL DE OUTROS GÊNEROS / CANAIS NO FINAL DA PÁGINA -->
+      
       <div style="margin-top: 40px;">
         ${carrosselRodape}
       </div>
@@ -648,7 +647,7 @@ function renderizarTela() {
     conteudoHTML = `
       <main class="page">
         <h1>${escaparHTML(tituloMatch)}</h1>
-        <p class="muted">${resultadosMatch.length} séries · Página ${paginaMatch} de ${totalPaginas}</p>
+        <p class="muted">${resultadosMatch.length} séries · Consulta nº ${totalConsultas} · Página ${paginaMatch} de ${totalPaginas}</p>
         <div id="match-cards" class="catalog-grid"></div>
         ${paginacaoHTML}
       </main>
