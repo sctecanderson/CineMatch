@@ -49,9 +49,22 @@ try {
 }
 
 const listaGeneros = [
-  "Drama", "Comedy", "Action", "Adventure", "Romance", "Thriller",
-  "Horror", "Mystery", "Crime", "Fantasy", "Science-Fiction",
-  "Family", "Animation", "History", "War", "Music"
+  "Drama",
+  "Comedy",
+  "Action",
+  "Adventure",
+  "Romance",
+  "Thriller",
+  "Horror",
+  "Mystery",
+  "Crime",
+  "Fantasy",
+  "Science-Fiction",
+  "Family",
+  "Animation",
+  "History",
+  "War",
+  "Music",
 ];
 
 /* ============================================================
@@ -59,8 +72,11 @@ const listaGeneros = [
    ============================================================ */
 function escaparHTML(texto) {
   return String(texto ?? "")
-    .replace(/&/g, "&amp;").replace(/</g, "&lt;")
-    .replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#39;");
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#39;");
 }
 
 function mostrarToast(mensagem) {
@@ -109,7 +125,9 @@ function reproduzirTrailer(idTitulo) {
    ============================================================ */
 function renderizarCard(item, ranking = 0) {
   const salvo = Store.favourites().includes(item.id);
-  const nota = item.rating ? `<span class="rating">★ ${item.rating}</span>` : "";
+  const nota = item.rating
+    ? `<span class="rating">★ ${item.rating}</span>`
+    : "";
 
   // Card do Top 10 (Cartaz Grande com Número Sobreposto, sem texto espremendo)
   if (ranking > 0) {
@@ -157,9 +175,16 @@ function gerarBotoesPaginacao(paginaAtual, totalPaginas, acao) {
   return html;
 }
 
-function renderizarCarrossel(titulo, itens, rotaVerTodos = "movies", comRanking = false) {
+function renderizarCarrossel(
+  titulo,
+  itens,
+  rotaVerTodos = "movies",
+  comRanking = false,
+) {
   if (!itens || !itens.length) return "";
-  const cardsHTML = itens.map((item, i) => renderizarCard(item, comRanking ? i + 1 : 0)).join("");
+  const cardsHTML = itens
+    .map((item, i) => renderizarCard(item, comRanking ? i + 1 : 0))
+    .join("");
 
   return `
     <section class="shelf">
@@ -181,12 +206,16 @@ function renderizarColecao(titulo, tipo, circular = false) {
   const itens = CINEMATCH_DATA.collections[tipo] || [];
   if (!itens.length) return "";
 
-  const cardsHTML = itens.map((c) => `
+  const cardsHTML = itens
+    .map(
+      (c) => `
     <a class="${circular ? "round-collection" : "landscape-card"}" href="#/browse/${tipo}/${encodeURIComponent(c.name)}">
       <img src="${c.image}" alt="${escaparHTML(c.name)}" loading="lazy">
       ${circular ? `<p>${escaparHTML(c.name)}</p>` : `<span>${escaparHTML(c.name)}</span>`}
     </a>
-  `).join("");
+  `,
+    )
+    .join("");
 
   return `
     <section class="shelf">
@@ -203,7 +232,9 @@ function renderizarColecao(titulo, tipo, circular = false) {
 }
 
 function renderizarHeader() {
-  const nomeUsuario = perfilAtual?.nome ? escaparHTML(perfilAtual.nome) : "Criar perfil";
+  const nomeUsuario = perfilAtual?.nome
+    ? escaparHTML(perfilAtual.nome)
+    : "Criar perfil";
   return `
     <header class="site-header">
       <button type="button" class="icon mobile-menu" data-action="toggle-menu" aria-label="Menu">☰</button>
@@ -293,8 +324,7 @@ function renderizarFooter() {
   return `
     <footer class="site-footer">
       <div class="footer-container">
-        <div class="footer-grid">
-          <!-- Coluna 1: Logo e Descrição -->
+        <div class="footer-grid">          
           <div class="footer-brand">
             <a class="logo" href="#/home">
               <img src="assets/logo.png" alt="CineMatch">
@@ -302,7 +332,6 @@ function renderizarFooter() {
             <p>Seu próximo favorito começa com um match. Recomendações personalizadas por gênero com dados da TVMaze.</p>
           </div>
 
-          <!-- Coluna 2: Links verticais -->
           <div class="footer-col">
             <h3>Navegação</h3>
             <div class="footer-links-list">
@@ -313,8 +342,7 @@ function renderizarFooter() {
               <a href="#/watchlist">Minha Lista</a>
             </div>
           </div>
-
-          <!-- Coluna 3: Projeto e API -->
+          
           <div class="footer-col">
             <h3>Sobre o Projeto</h3>
             <div class="footer-links-list">
@@ -323,8 +351,7 @@ function renderizarFooter() {
             </div>
           </div>
         </div>
-
-        <!-- Créditos do final -->
+        
         <div class="footer-bottom">
   <span>© ${new Date().getFullYear()} CineMatch · Todos os direitos reservados — Desenvolvido por: 
     <a target="_blank" rel="noopener noreferrer" href="https://github.com/sctecanderson">
@@ -347,15 +374,18 @@ function renderizarHero() {
   const destaques = CINEMATCH_DATA.heroes.home || [];
   if (!destaques.length) return "";
 
-  const slidesHTML = destaques.map((item, i) => {
-    // Busca dados no catálogo para puxar nota, idioma, etc.
-    const m = Store.catalog().find((c) => c.name.toLowerCase() === item.name.toLowerCase());
-    const idSlug = m?.id || item.name.toLowerCase().replace(/ /g, "-");
-    const naLista = Store.favourites().includes(idSlug);
-    const idioma = m?.language || "English";
-    const nota = m?.rating ? `<span>☆ ${m.rating}</span>` : "";
+  const slidesHTML = destaques
+    .map((item, i) => {
+      // Busca dados no catálogo para puxar nota, idioma, etc.
+      const m = Store.catalog().find(
+        (c) => c.name.toLowerCase() === item.name.toLowerCase(),
+      );
+      const idSlug = m?.id || item.name.toLowerCase().replace(/ /g, "-");
+      const naLista = Store.favourites().includes(idSlug);
+      const idioma = m?.language || "English";
+      const nota = m?.rating ? `<span>☆ ${m.rating}</span>` : "";
 
-    return `
+      return `
       <div class="hero-slide ${i === heroIndex ? "active" : ""}">
       
         <img class="hero-bg" src="${item.image}" alt="${escaparHTML(item.name)}">
@@ -377,9 +407,12 @@ function renderizarHero() {
         </div>
       </div>
     `;
-  }).join("");
+    })
+    .join("");
 
-  const botoesHTML = destaques.map((item, i) => `
+  const botoesHTML = destaques
+    .map(
+      (item, i) => `
     <button type="button" class="hero-menu-item ${i === heroIndex ? "active" : ""}" data-action="trocar-slide" data-index="${i}">
       <img src="${item.image}" alt="">
       <span>
@@ -388,7 +421,9 @@ function renderizarHero() {
       </span>
       <i class="hero-progress"></i>
     </button>
-  `).join("");
+  `,
+    )
+    .join("");
 
   return `
     <section class="hero cinematic-hero">
@@ -399,7 +434,7 @@ function renderizarHero() {
         <button type="button" data-action="hero-next" aria-label="Próximo">›</button>
       </div>
 
-      <!-- botão Pausar -->
+     
       <div class="hero-menu">
         ${botoesHTML}
         <button type="button" class="hero-pause" data-action="pausar-hero">${heroPausado ? "Retomar" : "Pausar"}</button>
@@ -426,13 +461,21 @@ function renderizarTelaCatalogo(tipo) {
     titulos = titulos.filter((c) => Store.favourites().includes(c.id));
     tituloPagina = "Minha Lista";
   } else if (tipo.startsWith("browse/genres/")) {
-    const generoBuscado = decodeURIComponent(tipo.replace("browse/genres/", "")).toLowerCase();
+    const generoBuscado = decodeURIComponent(
+      tipo.replace("browse/genres/", ""),
+    ).toLowerCase();
     tituloPagina = `Gênero: ${nomeGenero(decodeURIComponent(tipo.replace("browse/genres/", "")))}`;
-    
+
     titulos = titulos.filter((c) => {
-      return c.genres && c.genres.some((g) => {
-        return g.toLowerCase() === generoBuscado || nomeGenero(g).toLowerCase() === generoBuscado;
-      });
+      return (
+        c.genres &&
+        c.genres.some((g) => {
+          return (
+            g.toLowerCase() === generoBuscado ||
+            nomeGenero(g).toLowerCase() === generoBuscado
+          );
+        })
+      );
     });
   } else if (tipo.startsWith("browse/channels/")) {
     const nomeCanal = decodeURIComponent(tipo.replace("browse/channels/", ""));
@@ -440,22 +483,29 @@ function renderizarTelaCatalogo(tipo) {
   }
 
   // Aplica a busca antes de calcular as páginas
-if (buscaCatalogo) {
-  const termo = buscaCatalogo.toLocaleLowerCase("pt-BR");
+  if (buscaCatalogo) {
+    const termo = buscaCatalogo.toLocaleLowerCase("pt-BR");
 
-  titulos = titulos.filter((item) =>
-    item.name.toLocaleLowerCase("pt-BR").includes(termo)
-  );
-}
+    titulos = titulos.filter((item) =>
+      item.name.toLocaleLowerCase("pt-BR").includes(termo),
+    );
+  }
 
   // Paginação dos resultados
-  const totalPaginas = Math.max(1, Math.ceil(titulos.length / ITENS_POR_PAGINA));
+  const totalPaginas = Math.max(
+    1,
+    Math.ceil(titulos.length / ITENS_POR_PAGINA),
+  );
   paginaCatalogo = Math.min(paginaCatalogo, totalPaginas);
 
   const inicio = (paginaCatalogo - 1) * ITENS_POR_PAGINA;
   const visiveis = titulos.slice(inicio, inicio + ITENS_POR_PAGINA);
   const cards = visiveis.map((item) => renderizarCard(item)).join("");
-  const paginacaoHTML = gerarBotoesPaginacao(paginaCatalogo, totalPaginas, "mudar-pagina-catalogo");
+  const paginacaoHTML = gerarBotoesPaginacao(
+    paginaCatalogo,
+    totalPaginas,
+    "mudar-pagina-catalogo",
+  );
 
   // Carrossel de navegação rápida para outros gêneros ou canais
   const carrosselRodape = tipo.startsWith("browse/channels/")
@@ -463,7 +513,7 @@ if (buscaCatalogo) {
     : renderizarColecao("Explorar Outros Gêneros", "genres", false);
 
   return `
-    <main class="page">
+    <main id="content" class="page">
       <h1>${escaparHTML(tituloPagina)}</h1>
       <div class="catalog-search-wrap">
   <input
@@ -498,7 +548,7 @@ if (buscaCatalogo) {
 function renderizarTelaDetalhes(id) {
   const item = Store.catalog().find((c) => c.id === id);
   if (!item) {
-    return `<main class="page"><h1>Título não encontrado</h1><a class="button" href="#/home">Voltar ao início</a></main>`;
+    return `<main id="content" class="page"><h1>Título não encontrado</h1><a class="button" href="#/home">Voltar ao início</a></main>`;
   }
 
   const jaFavorito = Store.favourites().includes(item.id);
@@ -515,28 +565,27 @@ function renderizarTelaDetalhes(id) {
 
   // Busca séries semelhantes com base nos mesmos gêneros
   const semelhantes = Store.catalog()
-    .filter((c) => c.id !== item.id && c.genres?.some((g) => item.genres?.includes(g)))
+    .filter(
+      (c) =>
+        c.id !== item.id && c.genres?.some((g) => item.genres?.includes(g)),
+    )
     .slice(0, 10);
 
   return `
-    <main class="page detail-page">
-      <div class="detail-container">
-        <!-- Coluna da Esquerda: Cartaz com proporção real e nota -->
+    <main id="content" class="page detail-page">
+      <div class="detail-container">       
         <div class="detail-poster-wrap">
           <img class="detail-poster" src="${escaparHTML(item.image)}" alt="${escaparHTML(item.name)}">
           ${item.rating ? `<span class="detail-rating">★ ${item.rating} / 10</span>` : ""}
         </div>
-
-        <!-- Coluna da Direita: Dados completos e botões de ação -->
+        
         <div class="detail-info">
           <div class="row wrap" style="gap: 8px;">
             <span class="pill">${escaparHTML((item.type || "SÉRIE").toUpperCase())}</span>
             ${item.language ? `<span class="pill">${escaparHTML(item.language)}</span>` : ""}
             ${item.release ? `<span class="pill">${escaparHTML(item.release.slice(0, 4))}</span>` : ""}
           </div>
-
           <h1 class="detail-title">${escaparHTML(item.name)}</h1>
-
           <div class="detail-genres">
             ${(item.genres || []).map((g) => `<span class="genre-pill">${nomeGenero(g)}</span>`).join("")}
           </div>
@@ -562,14 +611,14 @@ function renderizarTelaDetalhes(id) {
         </div>
       </div>
 
-      <!-- Carrossel de Títulos Semelhantes no rodapé -->
+     
       ${renderizarCarrossel("Títulos Semelhantes", semelhantes, "tv-shows")}
     </main>
   `;
 }
 function renderizarTelaPerfil() {
   return `
-    <main class="profile-page">
+    <main id= "content" class="profile-page">
       <section class="profile-intro">
         <span class="hero-eyebrow">HISTÓRIAS QUE COMBINAM COM VOCÊ</span>
         <h1>Seu próximo favorito<br>começa com um <em>match.</em></h1>
@@ -585,9 +634,13 @@ function renderizarTelaPerfil() {
         <fieldset>
           <legend>Quais gêneros você mais gosta?</legend>
           <div class="genre-choices">
-            ${listaGeneros.map((g) => `
+            ${listaGeneros
+              .map(
+                (g) => `
               <label><input type="checkbox" name="generos" value="${g}"><span>${nomeGenero(g)}</span></label>
-            `).join("")}
+            `,
+              )
+              .join("")}
           </div>
         </fieldset>
         <p id="perfil-erro" role="alert"></p>
@@ -605,7 +658,8 @@ function renderizarTela() {
   rotaAtual = location.hash.replace(/^#\/?/, "") || "home";
 
   if (!perfilAtual) {
-    root.innerHTML = renderizarHeader() + renderizarTelaPerfil() + renderizarFooter();
+    root.innerHTML =
+      renderizarHeader() + renderizarTelaPerfil() + renderizarFooter();
     return;
   }
 
@@ -618,7 +672,7 @@ function renderizarTela() {
 
     conteudoHTML = `
       ${renderizarHero()}
-      <main class="home-sections">
+      <main id="content" class="home-sections">
         <section class="shelf recommendations">
           <div class="section-title">
             <h2>${escaparHTML(tituloMatch)}</h2>
@@ -628,24 +682,25 @@ function renderizarTela() {
         </section>
 
         ${renderizarCarrossel("Top 10 Destaques", filmes.slice(0, 10), "movies", true)}
-        ${renderizarCarrossel("Séries em Destaque", series.slice(0, 10), "tv-shows")}
-        
-        <!-- CARROSSEL DE CANAIS (CIRCULARES) -->
-        ${renderizarColecao("Principais Canais", "channels", true)}
-
+        ${renderizarCarrossel("Séries em Destaque", series.slice(0, 10), "tv-shows")}    
         ${renderizarCarrossel("Filmes Populares", filmes.slice(5, 15), "movies")}
-
-        <!-- CARROSSEL DE GÊNEROS (RETANGULARES) -->
         ${renderizarColecao("Gêneros", "genres", false)}
       </main>
     `;
   } else if (rotaAtual === "recomendacoes") {
-    const totalPaginas = Math.max(1, Math.ceil(resultadosMatch.length / ITENS_POR_PAGINA));
+    const totalPaginas = Math.max(
+      1,
+      Math.ceil(resultadosMatch.length / ITENS_POR_PAGINA),
+    );
     paginaMatch = Math.min(paginaMatch, totalPaginas);
-    const paginacaoHTML = gerarBotoesPaginacao(paginaMatch, totalPaginas, "mudar-pagina-match");
+    const paginacaoHTML = gerarBotoesPaginacao(
+      paginaMatch,
+      totalPaginas,
+      "mudar-pagina-match",
+    );
 
     conteudoHTML = `
-      <main class="page">
+      <main id="content" class="page">
         <h1>${escaparHTML(tituloMatch)}</h1>
         <p class="muted">${resultadosMatch.length} séries · Consulta nº ${totalConsultas} · Página ${paginaMatch} de ${totalPaginas}</p>
         <div id="match-cards" class="catalog-grid"></div>
@@ -654,10 +709,13 @@ function renderizarTela() {
     `;
   } else if (rotaAtual.startsWith("detail/")) {
     conteudoHTML = renderizarTelaDetalhes(rotaAtual.replace("detail/", ""));
-  } else if (["movies", "tv-shows", "watchlist"].includes(rotaAtual) || rotaAtual.startsWith("browse/")) {
+  } else if (
+    ["movies", "tv-shows", "watchlist"].includes(rotaAtual) ||
+    rotaAtual.startsWith("browse/")
+  ) {
     conteudoHTML = renderizarTelaCatalogo(rotaAtual);
   } else {
-    conteudoHTML = `<main class="page"><h1>Página não encontrada</h1><a class="button" href="#/home">Voltar ao início</a></main>`;
+    conteudoHTML = `<main id="content" class="page"><h1>Página não encontrada</h1><a class="button" href="#/home">Voltar ao início</a></main>`;
   }
 
   root.innerHTML = renderizarHeader() + conteudoHTML + renderizarFooter();
@@ -674,13 +732,17 @@ function preencherCardsMatch() {
       container,
       estadoAPI === "erro" ? "erro" : "carregando",
       estadoAPI === "erro" ? mensagemErroAPI : "Consultando séries na TVMaze…",
-      carregarCatalogoTVMaze
+      carregarCatalogoTVMaze,
     );
     return;
   }
 
   if (!resultadosMatch.length) {
-    renderizarEstado(container, "vazio", "Nenhuma série com afinidade suficiente.");
+    renderizarEstado(
+      container,
+      "vazio",
+      "Nenhuma série com afinidade suficiente.",
+    );
     return;
   }
 
@@ -715,7 +777,11 @@ async function carregarCatalogoTVMaze() {
     const seriesModelos = dados.map((d) => new Serie(d));
     resultadosMatch = seriesModelos
       .map((s) => s.calcularAfinidade(perfilAtual.generosFavoritos))
-      .sort((a, b) => b.percentual - a.percentual || (b.serie.nota || 0) - (a.serie.nota || 0));
+      .sort(
+        (a, b) =>
+          b.percentual - a.percentual ||
+          (b.serie.nota || 0) - (a.serie.nota || 0),
+      );
 
     Store.setSeries(
       dados.map((d) => ({
@@ -732,7 +798,7 @@ async function carregarCatalogoTVMaze() {
         status: true,
         trailer: "",
         description: d.resumo ? d.resumo.replace(/<[^>]*>/g, "") : "",
-      }))
+      })),
     );
 
     aoConcluirBusca(perfilAtual.nome, (texto) => {
@@ -756,7 +822,7 @@ function sincronizarHero() {
   if (!heroPausado && document.querySelector(".cinematic-hero")) {
     heroTimer = setInterval(() => {
       trocarSlideHero(1);
-    }, 6500);
+    }, INTERVALO_BANNER);
   }
 }
 
@@ -767,7 +833,9 @@ function trocarSlideHero(passo) {
 
   heroIndex = (heroIndex + passo + slides.length) % slides.length;
 
-  slides.forEach((slide, i) => slide.classList.toggle("active", i === heroIndex));
+  slides.forEach((slide, i) =>
+    slide.classList.toggle("active", i === heroIndex),
+  );
   botoes.forEach((btn, i) => btn.classList.toggle("active", i === heroIndex));
 }
 
@@ -803,11 +871,15 @@ function mostrarCarregamento(aoFinalizar) {
   // Duração do GIF na tela (2.5 segundos)
   const timer = setTimeout(encerrar, 2500);
 
-  imagem.addEventListener("error", () => {
-    clearTimeout(timer);
-    camada.remove();
-    if (typeof aoFinalizar === "function") aoFinalizar();
-  }, { once: true });
+  imagem.addEventListener(
+    "error",
+    () => {
+      clearTimeout(timer);
+      camada.remove();
+      if (typeof aoFinalizar === "function") aoFinalizar();
+    },
+    { once: true },
+  );
 
   camada.appendChild(imagem);
   document.body.appendChild(camada);
@@ -816,9 +888,9 @@ function mostrarCarregamento(aoFinalizar) {
 /* ============================================================
    7. ESCUTA DE EVENTOS (addEventListener)
    ============================================================ */
-  document.addEventListener("click", (evento) => {
+document.addEventListener("click", (evento) => {
   // 1. Intercepta cliques no Logo ou no link "Início" para tocar o GIF de carregamento
-  const linkHome = evento.target.closest(' a.logo');
+  const linkHome = evento.target.closest(" a.logo");
   if (linkHome) {
     evento.preventDefault();
     mostrarCarregamento(() => {
@@ -870,7 +942,9 @@ function mostrarCarregamento(aoFinalizar) {
     case "toggle-favorito":
       if (id) {
         const adicionou = Store.toggleFavourite(id);
-        mostrarToast(adicionou ? "Adicionado à sua lista!" : "Removido da lista.");
+        mostrarToast(
+          adicionou ? "Adicionado à sua lista!" : "Removido da lista.",
+        );
         renderizarTela();
       }
       break;
@@ -919,7 +993,7 @@ function mostrarCarregamento(aoFinalizar) {
       location.hash = "#/movies";
       setTimeout(() => document.querySelector("#input-busca")?.focus(), 150);
       break;
-      case "hero-prev":
+    case "hero-prev":
       trocarSlideHero(-1);
       sincronizarHero();
       break;
@@ -938,9 +1012,7 @@ document.addEventListener("submit", (evento) => {
 
   evento.preventDefault();
 
-  const termo = formulario
-    .querySelector("#header-search-input")
-    .value.trim();
+  const termo = formulario.querySelector("#header-search-input").value.trim();
 
   if (!termo) return;
 
@@ -970,7 +1042,8 @@ document.addEventListener("submit", (evento) => {
 
   const erroEl = document.querySelector("#perfil-erro");
   if (!validarPerfil(novoPerfil)) {
-    if (erroEl) erroEl.textContent = "Preencha seu nome, idade e ao menos um gênero.";
+    if (erroEl)
+      erroEl.textContent = "Preencha seu nome, idade e ao menos um gênero.";
     return;
   }
 
@@ -1000,16 +1073,20 @@ document.addEventListener("input", (evento) => {
   }
 });
 
-window.addEventListener("scroll", () => {
-  if (btnVoltarTopo) btnVoltarTopo.hidden = window.scrollY < 350;
-}, { passive: true });
+window.addEventListener(
+  "scroll",
+  () => {
+    if (btnVoltarTopo) btnVoltarTopo.hidden = window.scrollY < 350;
+  },
+  { passive: true },
+);
 
 window.addEventListener("hashchange", () => {
   paginaCatalogo = 1;
   paginaMatch = 1;
   buscaCatalogo = ""; // limpa a busca ao mudar de rota
   renderizarTela();
-  window.scrollTo({ top: 0, behavior: "smooth" }); 
+  window.scrollTo({ top: 0, behavior: "smooth" });
 });
 document.addEventListener("click", (evento) => {
   if (!evento.target.closest("#limpar-busca")) return;
@@ -1030,3 +1107,4 @@ mostrarCarregamento(() => {
     carregarCatalogoTVMaze();
   }
 });
+

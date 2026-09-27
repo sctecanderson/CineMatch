@@ -19,8 +19,8 @@
 
 ## 📌 Links Obrigatórios de Entrega (AVA)
 
-* 🔗 **Repositório GitHub:** `https://github.com/sctecanderson/cinematch-web`
-* 📋 **Quadro Kanban (Trello):** [Acesse o Quadro do Projeto](https://trello.com/...) *(insira o link público do seu Trello)*
+* 🔗 **Repositório GitHub:** `https://github.com/sctecanderson/CineMatch`
+* 📋 **Quadro Kanban (Trello):** [Acesse o Quadro do Projeto](https://trello.com/b/xFGqs6B4/cinematch-projeto-web) *(insira o link público do seu Trello)*
 * 🎥 **Vídeo de Apresentação (Até 7 min):** [Assista à Demonstração no YouTube / Google Drive](https://...) *(insira o link do vídeo)*
 
 ---

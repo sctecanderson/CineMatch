@@ -46,29 +46,46 @@ body {
 }
 
 /* ============================================================
-   2. ELEMENTOS BASE (Tipografia, Links, Botões e Inputs)
+   2. ELEMENTOS BASE (TIPOGRAFIA, LINKS, BOTÕES E INPUTS)
    ============================================================ */
 a {
     color: inherit;
     text-decoration: none;
 }
 
-h1, h2, h3, h4, p {
+h1,
+h2,
+h3,
+h4,
+p {
     margin-top: 0;
 }
 
-h1 { font-size: 2rem; }
-h2 { font-size: 1.5rem; }
-h3 { font-size: 1.15rem; }
+h1 {
+    font-size: 2rem;
+}
 
-p, small, .muted {
+h2 {
+    font-size: 1.5rem;
+}
+
+h3 {
+    font-size: 1.15rem;
+}
+
+p,
+small,
+.muted {
     color: var(--muted);
     line-height: 1.6;
 }
 
-small { font-size: 0.8rem; }
+small {
+    font-size: 0.8rem;
+}
 
-button, .button {
+button,
+.button {
     border: 0;
     background: var(--red);
     color: #fff;
@@ -85,9 +102,20 @@ button, .button {
     transition: background 0.2s;
 }
 
-button:hover, .button:hover { background: var(--red-hover); }
-button.secondary, .button.secondary { background: var(--raised); }
-button.ghost { background: transparent; border: 1px solid var(--line); }
+button:hover,
+.button:hover {
+    background: var(--red-hover);
+}
+
+button.secondary,
+.button.secondary {
+    background: var(--raised);
+}
+
+button.ghost {
+    background: transparent;
+    border: 1px solid var(--line);
+}
 
 button.icon {
     padding: 10px;
@@ -95,8 +123,14 @@ button.icon {
     height: 40px;
     background: rgba(255, 255, 255, 0.08);
 }
-button.icon:hover { background: rgba(255, 255, 255, 0.15); }
-button.circle { border-radius: 50%; }
+
+button.icon:hover {
+    background: rgba(255, 255, 255, 0.15);
+}
+
+button.circle {
+    border-radius: 50%;
+}
 
 svg.icon-svg {
     width: 20px;
@@ -108,7 +142,9 @@ svg.icon-svg {
     stroke-linejoin: round;
 }
 
-input, select, textarea {
+input,
+select,
+textarea {
     background: #0d181e;
     border: 1px solid var(--line);
     border-radius: 5px;
@@ -118,7 +154,9 @@ input, select, textarea {
     width: 100%;
 }
 
-input:focus, select:focus, textarea:focus {
+input:focus,
+select:focus,
+textarea:focus {
     outline: 2px solid var(--red);
 }
 
@@ -134,8 +172,14 @@ input:focus, select:focus, textarea:focus {
     align-items: center;
     gap: 12px;
 }
-.row.wrap { flex-wrap: wrap; }
-.row.between { justify-content: space-between; }
+
+.row.wrap {
+    flex-wrap: wrap;
+}
+
+.row.between {
+    justify-content: space-between;
+}
 
 .panel {
     background: var(--panel);
@@ -143,7 +187,6 @@ input:focus, select:focus, textarea:focus {
     padding: 24px;
 }
 
-/* Garante que checkboxes não fiquem gigantes */
 input[type="checkbox"] {
     min-height: 0 !important;
     width: 17px !important;
@@ -161,7 +204,9 @@ input[type="checkbox"] {
 .site-header {
     height: 76px;
     position: fixed;
-    top: 0; left: 0; right: 0;
+    top: 0;
+    left: 0;
+    right: 0;
     z-index: 60;
     background: rgba(3, 11, 14, 0.92);
     backdrop-filter: blur(12px);
@@ -178,6 +223,12 @@ input[type="checkbox"] {
     object-fit: contain;
 }
 
+.site-header .logo img {
+    width: 380px;
+    height: 46px;
+    object-fit: contain;
+}
+
 .main-nav {
     display: flex;
     align-items: center;
@@ -186,76 +237,71 @@ input[type="checkbox"] {
     font-size: 0.95rem;
 }
 
-.main-nav > a:hover,
-.main-nav > a.active {
+.main-nav>a:hover,
+.main-nav>a.active {
     color: var(--red);
-}
-.header-actions {
-  margin-left: auto;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.site-header .logo img {
-  width: 380px;
-  height: 46px;
-  object-fit: contain;
 }
 
 .main-nav .nav-match {
-  display: inline-flex;
-  align-items: center;
-  min-height: 40px;
-  padding: 10px 16px;
-  border: 1px solid #ff334455;
-  border-radius: 6px;
-  background: linear-gradient(135deg, #ed0016, #a90012);
-  color: #fff;
-  box-shadow: 0 5px 18px #ed001633;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    min-height: 40px;
+    padding: 10px 16px;
+    border: 1px solid #ff334455;
+    border-radius: 6px;
+    background: linear-gradient(135deg, #ed0016, #a90012);
+    color: #fff;
+    box-shadow: 0 5px 18px #ed001633;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .main-nav .nav-match:hover,
 .main-nav .nav-match.active {
-  color: #fff;
-  transform: translateY(-1px);
-  box-shadow: 0 7px 22px #ed001655;
+    color: #fff;
+    transform: translateY(-1px);
+    box-shadow: 0 7px 22px #ed001655;
+}
+
+.header-actions {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    gap: 10px;
 }
 
 .header-icon-link {
-  display: inline-flex;
-  width: 40px;
-  height: 40px;
-  align-items: center;
-  justify-content: center;
-  border: 1px solid #ffffff12;
-  border-radius: 5px;
-  background: #ffffff0d;
-  color: var(--text);
-  transition: background 0.2s ease, border-color 0.2s ease;
+    display: inline-flex;
+    width: 40px;
+    height: 40px;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #ffffff12;
+    border-radius: 5px;
+    background: #ffffff0d;
+    color: var(--text);
+    transition: background 0.2s ease, border-color 0.2s ease;
 }
 
 .header-icon-link:hover {
-  background: #ffffff20;
-  border-color: #ffffff30;
+    background: #ffffff20;
+    border-color: #ffffff30;
 }
 
 .profile-button {
-  min-height: 40px;
-  gap: 9px;
-  padding: 10px 15px;
+    min-height: 40px;
+    gap: 9px;
+    padding: 10px 15px;
 }
 
-.mobile-menu { display: none !important; }
+.mobile-menu {
+    display: none !important;
+}
 
-/*Detalhe no  meu nome*/
 .perfil-red:hover {
-    color: #ff8585; 
-    text-decoration: underline; 
+    color: #ff8585;
+    text-decoration: underline;
     text-shadow: 0 0 10px rgba(255, 0, 0, 0.6);
 }
-
 
 .site-footer {
     border-top: 1px solid var(--line);
@@ -301,7 +347,6 @@ input[type="checkbox"] {
     font-weight: 600;
 }
 
-/* Coloca cada link em sua própria linha com respiro e hover */
 .footer-links-list {
     display: flex;
     flex-direction: column;
@@ -331,12 +376,11 @@ input[type="checkbox"] {
     font-size: 0.82rem;
 }
 
-
 /* ============================================================
-   4. BANNER PRINCIPAL (HERO DE TELA CHEIA E GRANDE PRESENÇA)
+   4. BANNER PRINCIPAL (HERO DE TELA CHEIA)
    ============================================================ */
 .hero {
-    height: 94vh;                     /* Ocupa praticamente a tela inteira */
+    height: 94vh;
     min-height: 640px;
     max-height: 980px;
     position: relative;
@@ -355,19 +399,19 @@ input[type="checkbox"] {
     transition: opacity 0.8s ease, visibility 0.8s;
     z-index: 1;
 }
+
 .hero-slide.active {
     opacity: 1;
     visibility: visible;
     z-index: 2;
 }
 
-/* Degradê cinematográfico escuro na base e na lateral esquerda */
 .hero-slide:after {
     content: '';
     position: absolute;
     inset: 0;
     background: linear-gradient(90deg, #000d14fa 0%, rgba(0, 13, 20, 0.4) 65%, transparent 100%),
-                linear-gradient(0deg, var(--bg) 0%, transparent 60%);
+        linear-gradient(0deg, var(--bg) 0%, transparent 60%);
     z-index: 1;
 }
 
@@ -408,7 +452,6 @@ input[type="checkbox"] {
     margin-bottom: 14px;
 }
 
-/* Setas de navegação laterais */
 .hero-arrows {
     position: absolute;
     top: 50%;
@@ -438,7 +481,6 @@ input[type="checkbox"] {
     transform: scale(1.2);
 }
 
-/* Menu inferior com as miniaturas dos títulos */
 .hero-menu {
     position: absolute;
     z-index: 4;
@@ -487,14 +529,12 @@ input[type="checkbox"] {
     margin-bottom: 2px;
 }
 
-/* Botão ativo com borda branca e cantos arredondados (Igual ao Print 2) */
 .hero-menu-item.active {
     border: 1.5px solid #ffffff !important;
     background: rgba(255, 255, 255, 0.12) !important;
     border-radius: 8px !important;
 }
 
-/* Garante o espaçamento entre o idioma e a estrela da nota */
 .hero-content .metadata {
     display: flex;
     align-items: center;
@@ -518,11 +558,15 @@ input[type="checkbox"] {
 }
 
 @keyframes banner-progress {
-    from { width: 0; }
-    to { width: 100%; }
+    from {
+        width: 0;
+    }
+
+    to {
+        width: 100%;
+    }
 }
 
-/* Botão Pausar elegante */
 .hero-pause {
     background: transparent !important;
     border: 1px solid rgba(255, 255, 255, 0.35) !important;
@@ -532,19 +576,28 @@ input[type="checkbox"] {
     font-size: 0.85rem !important;
     cursor: pointer;
 }
+
 .hero-pause:hover {
     background: rgba(255, 255, 255, 0.12) !important;
 }
 
 /* ============================================================
-   5. SEÇÕES, CARROSSÉIS E CARDS DE FILMES / SÉRIES
+   5. SEÇÕES, CARROSSÉIS E CARDS DE FILMES E SÉRIES
    ============================================================ */
-.home-sections, .page {
+.home-sections,
+.page {
     padding: 20px 32px 60px;
 }
-.page { padding-top: 110px; min-height: 75vh; }
 
-.shelf { margin: 30px 0 50px; }
+.page {
+    padding-top: 110px;
+    min-height: 75vh;
+}
+
+.shelf {
+    margin: 30px 0 50px;
+}
+
 .section-title {
     display: flex;
     justify-content: space-between;
@@ -552,31 +605,52 @@ input[type="checkbox"] {
     margin-bottom: 20px;
 }
 
-.carousel-shell { position: relative; }
+.carousel-shell {
+    position: relative;
+}
+
 .carousel {
     display: flex;
     gap: 20px;
     overflow-x: auto;
+    overflow-y: hidden;
+    touch-action: pan-x pan-y;
     scrollbar-width: none;
     scroll-snap-type: x proximity;
     padding-bottom: 12px;
 }
-.carousel::-webkit-scrollbar { display: none; }
+
+.carousel:has(.rank-card) {
+    padding-bottom: 28px;
+}
+
+.carousel::-webkit-scrollbar {
+    display: none;
+}
 
 .carousel-arrow {
     position: absolute;
-    top: 0; bottom: 12px;
+    top: 0;
+    bottom: 12px;
     width: 50px;
     z-index: 8;
     background: rgba(0, 0, 0, 0.5);
     opacity: 0;
     transition: opacity 0.2s;
 }
-.carousel-arrow.prev { left: 0; }
-.carousel-arrow.next { right: 0; }
-.carousel-shell:hover .carousel-arrow { opacity: 1; }
 
-/* Card padrão de filme/série */
+.carousel-arrow.prev {
+    left: 0;
+}
+
+.carousel-arrow.next {
+    right: 0;
+}
+
+.carousel-shell:hover .carousel-arrow {
+    opacity: 1;
+}
+
 .movie-card {
     flex: 0 0 calc((100% - 80px) / 5);
     min-width: 160px;
@@ -592,34 +666,44 @@ input[type="checkbox"] {
     aspect-ratio: 2/3;
     overflow: hidden;
 }
+
 .poster-link img {
-    width: 100%; height: 100%;
+    width: 100%;
+    height: 100%;
     object-fit: cover;
     transition: transform 0.3s;
 }
-.movie-card:hover .poster-link img { transform: scale(1.05); }
+
+.movie-card:hover .poster-link img {
+    transform: scale(1.05);
+}
 
 .card-overlay {
     position: absolute;
     inset: auto 0 0;
     padding: 30px 10px 10px;
-    background: linear-gradient(transparent, rgba(0,0,0,0.9));
+    background: linear-gradient(transparent, rgba(0, 0, 0, 0.9));
     display: flex;
     align-items: center;
     justify-content: space-between;
     opacity: 0;
     transition: opacity 0.2s;
 }
-.movie-card:hover .card-overlay { opacity: 1; }
+
+.movie-card:hover .card-overlay {
+    opacity: 1;
+}
 
 .rating {
     position: absolute;
-    top: 10px; right: 10px;
+    top: 10px;
+    right: 10px;
     background: rgba(0, 0, 0, 0.75);
     border-radius: 4px;
     font-size: 0.8rem;
     padding: 4px 6px;
 }
+
 .card-name {
     padding: 10px;
     font-size: 0.85rem;
@@ -628,11 +712,11 @@ input[type="checkbox"] {
     text-overflow: ellipsis;
 }
 
-/* Cards de Canais  */
 .round-collection {
     flex: 0 0 150px;
     text-align: center;
 }
+
 .round-collection img {
     width: 130px;
     height: 130px;
@@ -642,24 +726,26 @@ input[type="checkbox"] {
     display: block;
     margin: 0 auto;
 }
+
 .round-collection p {
     font-size: 0.9rem;
     margin: 10px 0 0;
 }
 
-/* Cards de Gêneros */
 .landscape-card {
     flex: 0 0 230px;
     position: relative;
     overflow: hidden;
     border-radius: var(--radius);
 }
+
 .landscape-card img {
     width: 100%;
     aspect-ratio: 16/10;
     object-fit: cover;
     display: block;
 }
+
 .landscape-card span {
     position: absolute;
     left: 16px;
@@ -667,31 +753,6 @@ input[type="checkbox"] {
     font-size: 1.1rem;
     font-weight: 700;
     text-shadow: 0 2px 6px rgba(0, 0, 0, 0.8);
-}
-
-/* Cards do Top 10 */
-.rank-card {
-    flex: 0 0 240px;
-    display: flex;
-    align-items: flex-end;
-    position: relative;
-    background: transparent;
-}
-.rank-card .poster-link {
-    width: 170px;
-    margin-left: auto;
-}
-.rank-card .rank {
-    position: absolute;
-    left: 0;
-    bottom: -15px;
-    font-size: 6.5rem;
-    line-height: 0.8;
-    font-weight: 900;
-    color: #eee;
-    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.8);
-    pointer-events: none;
-    z-index: 3;
 }
 
 /* ============================================================
@@ -702,11 +763,13 @@ input[type="checkbox"] {
     background: #0f161a;
     font-size: 0.8rem;
 }
+
 .afinidade-info strong {
     color: var(--red);
     display: block;
     margin-bottom: 4px;
 }
+
 .afinidade-info p {
     margin: 4px 0;
     font-size: 0.75rem;
@@ -720,7 +783,6 @@ input[type="checkbox"] {
     color: var(--muted);
 }
 
-/* Tela de Criação de Perfil com Imagem de Fundo */
 .profile-page {
     min-height: 100vh;
     padding: 120px 6% 60px;
@@ -728,19 +790,24 @@ input[type="checkbox"] {
     align-items: center;
     gap: 48px;
     background-color: var(--bg);
-    background-image: 
+    background-image:
         linear-gradient(rgba(0, 13, 20, 0.55), rgba(0, 13, 20, 0.85)),
         url("../assets/fundo-conta.jpg");
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
 }
-.profile-intro { flex: 1; }
+
+.profile-intro {
+    flex: 1;
+}
+
 .profile-intro h1 {
     font-size: clamp(32px, 4vw, 54px);
     line-height: 1.1;
     margin-bottom: 16px;
 }
+
 .profile-intro em {
     font-style: normal;
     color: var(--red);
@@ -756,25 +823,22 @@ input[type="checkbox"] {
     padding: 36px;
     box-shadow: 0 25px 60px rgba(0, 0, 0, 0.7);
 }
+
 .profile-form .form-grid {
     display: grid;
     grid-template-columns: 3fr 1fr;
-    gap: 16px;                     
-    align-items: start;
-}
-.profile-form .form-grid {
-    display: grid;
-    grid-template-columns: 3fr 1fr;
-    gap: 16px;                     
+    gap: 16px;
     align-items: start;
     margin-bottom: 20px;
 }
+
 .genre-choices {
     display: flex;
     flex-wrap: wrap;
     gap: 8px;
     margin: 18px 0;
 }
+
 .genre-choices label {
     display: inline-flex;
     align-items: center;
@@ -786,6 +850,7 @@ input[type="checkbox"] {
     font-size: 0.85rem;
     transition: border-color 0.2s, background 0.2s;
 }
+
 .genre-choices label:has(:checked) {
     border-color: var(--red);
     background: rgba(237, 0, 22, 0.15);
@@ -799,7 +864,8 @@ input[type="checkbox"] {
     flex-wrap: wrap;
     gap: 20px;
 }
-.catalog-grid > .movie-card {
+
+.catalog-grid>.movie-card {
     flex: 0 0 calc((100% - 80px) / 5);
 }
 
@@ -810,54 +876,59 @@ input[type="checkbox"] {
     flex-wrap: wrap;
     margin: 20px 0 30px;
 }
-.filterbar input, .filterbar select {
+
+.filterbar input,
+.filterbar select {
     flex: 1;
     min-width: 160px;
 }
 
 .catalog-search-wrap {
-  flex: 0 1 50%;
-  width: 50%;
-  min-width: 200px;
+    position: relative;
+    /* Mantém o botão de limpar fixado dentro do campo */
+    flex: 0 1 50%;
+    width: 50%;
+    min-width: 200px;
 }
 
 .catalog-search-wrap #input-busca {
-  width: 100%;
-  padding-right: 46px;
+    width: 100%;
+    padding-right: 46px;
 }
 
 .catalog-search-clear {
-  position: absolute;
-  top: 50%;
-  right: 9px;
-  transform: translateY(-50%);
-  display: grid;
-  place-items: center;
-  width: 30px;
-  height: 30px;
-  min-height: 0;
-  padding: 0;
-  border: 0;
-  border-radius: 50%;
-  background: transparent;
-  color: var(--muted);
-  font-size: 23px;
-  line-height: 1;
+    position: absolute;
+    top: 50%;
+    right: 9px;
+    transform: translateY(-50%);
+    display: grid;
+    place-items: center;
+    width: 30px;
+    height: 30px;
+    min-height: 0;
+    padding: 0;
+    border: 0;
+    border-radius: 50%;
+    background: transparent;
+    color: var(--muted);
+    font-size: 23px;
+    line-height: 1;
+    cursor: pointer;
+    z-index: 2;
 }
 
 .catalog-search-clear:hover {
-  background: #ffffff14;
-  color: var(--text);
+    background: #ffffff14;
+    color: var(--text);
 }
 
 .catalog-search-clear[hidden] {
-  display: none;
+    display: none;
 }
 
-/* Oculta o “×” nativo; usamos o botão próprio acima */
 #input-busca::-webkit-search-cancel-button {
-  -webkit-appearance: none;
-  appearance: none;
+    -webkit-appearance: none;
+    appearance: none;
 }
 
 /* ============================================================
@@ -872,10 +943,12 @@ dialog {
     width: min(780px, 92vw);
     max-height: 85vh;
 }
+
 dialog::backdrop {
     background: rgba(0, 0, 0, 0.7);
     backdrop-filter: blur(4px);
 }
+
 .modal-head {
     display: flex;
     justify-content: space-between;
@@ -883,17 +956,23 @@ dialog::backdrop {
     padding: 16px 20px;
     border-bottom: 1px solid var(--line);
 }
-.modal-body { padding: 20px; }
 
-.modal-video, .player {
+.modal-body {
+    padding: 20px;
+}
+
+.modal-video,
+.player {
     width: 100%;
     aspect-ratio: 16/9;
     border: 0;
     background: #000;
 }
+
 #toast {
     position: fixed;
-    bottom: 25px; left: 50%;
+    bottom: 25px;
+    left: 50%;
     transform: translate(-50%, 40px);
     background: #202e36;
     color: #fff;
@@ -904,46 +983,12 @@ dialog::backdrop {
     transition: transform 0.2s, opacity 0.2s;
     z-index: 200;
 }
+
 #toast.show {
     opacity: 1;
     transform: translate(-50%, 0);
 }
 
-/* Botão Voltar ao Topo com efeito pulsante */
-#back-to-top {
-    position: fixed;
-    right: 65px;            
-    bottom: 55px;          
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    background: var(--red);
-    color: #fff;
-    border: none;
-    cursor: pointer;
-    z-index: 90;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-shadow: 0 4px 15px rgba(237, 0, 22, 0.4);
-    animation: pulsar-botao 2s infinite ease-in-out;
-    transition: transform 0.2s, background 0.2s;
-}
-
-#back-to-top:hover {
-    background: var(--red-hover);
-    transform: scale(1.12);
-}
-
-#back-to-top svg {
-    width: 24px;
-    height: 24px;
-    fill: none;
-    stroke: #fff;
-    stroke-width: 2.5;
-}
-
-/* Carregamento inicial com GIF */
 .camada-carregamento {
     position: fixed;
     inset: 0;
@@ -954,18 +999,47 @@ dialog::backdrop {
     background: var(--bg);
     transition: opacity 0.35s ease;
 }
+
 .camada-carregamento img {
     width: clamp(80px, 12vw, 130px);
     height: auto;
     object-fit: contain;
 }
+
 .camada-carregamento.saindo {
     opacity: 0;
     pointer-events: none;
 }
+
 /* ============================================================
-   9. Fixa o tamanho correto dos cards do Top 10 
+   9. CARDS DO TOP 10 (RANKING)
    ============================================================ */
+.rank-card {
+    flex: 0 0 240px;
+    display: flex;
+    align-items: flex-end;
+    position: relative;
+    background: transparent;
+}
+
+.rank-card .poster-link {
+    width: 170px;
+    margin-left: auto;
+}
+
+.rank-card .rank {
+    position: absolute;
+    left: 0;
+    bottom: -15px;
+    font-size: 6.5rem;
+    line-height: 0.8;
+    font-weight: 900;
+    color: #eee;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.8);
+    pointer-events: none;
+    z-index: 3;
+}
+
 .carousel .rank-card {
     flex: 0 0 230px !important;
     min-width: 230px !important;
@@ -1005,7 +1079,7 @@ dialog::backdrop {
 }
 
 /* ============================================================
-   10 - LAYOUT DA TELA APOS O CLIQUE NO CARD
+   10. TELA DE DETALHES DO TÍTULO
    ============================================================ */
 .detail-page {
     padding-top: 100px;
@@ -1037,7 +1111,8 @@ dialog::backdrop {
 
 .detail-rating {
     position: absolute;
-    top: 12px; right: 12px;
+    top: 12px;
+    right: 12px;
     background: rgba(0, 0, 0, 0.85);
     color: #f5b300;
     padding: 6px 10px;
@@ -1112,256 +1187,285 @@ dialog::backdrop {
     color: var(--text);
 }
 
+/* ============================================================
+   11. BARRA DE PESQUISA E BOTÃO VOLTAR AO TOPO
+   ============================================================ */
+#back-to-top {
+    position: fixed;
+    right: 65px;
+    bottom: 55px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: var(--red);
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    z-index: 90;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 15px rgba(237, 0, 22, 0.4);
+    animation: pulsar-botao 2s infinite ease-in-out;
+    transition: transform 0.2s, background 0.2s;
+    padding: 12px;
+}
+
+#back-to-top:hover {
+    background: var(--red-hover);
+    transform: scale(1.12);
+}
+
+#back-to-top svg {
+    width: 24px;
+    height: 24px;
+    fill: none;
+    stroke: #fff;
+    stroke-width: 2.5;
+}
+
+.header-search {
+    display: none;
+    flex: 0 1 280px;
+    min-width: 150px;
+    max-width: 320px;
+    height: 42px;
+    align-items: stretch;
+    border-radius: 6px;
+    overflow: hidden;
+}
+
+.header-search input {
+    width: 100%;
+    min-width: 0;
+    min-height: 0;
+    border: 0;
+    border-radius: 0;
+    padding: 0 14px;
+    background: #eee;
+    color: #171717;
+}
+
+.header-search-submit {
+    width: 52px;
+    min-width: 52px;
+    height: 42px;
+    padding: 0;
+    border-radius: 0;
+}
+
+.header-search-submit .icon-svg {
+    width: 22px;
+    height: 22px;
+}
+
+@keyframes pulsar-botao {
+    0% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(237, 0, 22, 0.7);
+    }
+
+    70% {
+        transform: scale(1.08);
+        box-shadow: 0 0 0 14px rgba(237, 0, 22, 0);
+    }
+
+    100% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(237, 0, 22, 0);
+    }
+}
+
+/* ============================================================
+   11. RESPONSIVIDADE (MEDIA QUERIES)
+   ============================================================ */
+/* 1. Telas Grandes (Desktop amplo) */
+@media (min-width: 1200px) {
+    .site-header {
+        padding-left: max(32px, calc((100vw - 1600px) / 2));
+        padding-right: max(40px, calc((100vw - 1700px) / 2));
+    }
+}
+
+/* 2. Telas Médias e Desktop (a partir de 700px) */
+@media (min-width: 700px) {
+    .main-nav {
+        gap: clamp(12px, 1.3vw, 22px);
+        font-size: clamp(0.92rem, 1.05vw, 1.12rem);
+        letter-spacing: 0.03em;
+        text-transform: uppercase;
+    }
+
+    .header-search {
+        display: flex;
+    }
+
+    .header-actions [data-action="ir-busca"],
+    .header-actions [data-action="search"] {
+        display: none !important;
+    }
+
+    .filterbar:has(#input-busca) {
+        display: none;
+    }
+}
+
+/* 3. Tablets e Notebooks Menores (até 900px) */
+@media (max-width: 900px) {
+    .site-header {
+        padding: 0 16px;
+    }
+
+    .mobile-menu {
+        display: inline-flex !important;
+    }
+
+    .main-nav {
+        display: none;
+        position: absolute;
+        top: 76px;
+        left: 0;
+        right: 0;
+        background: var(--panel);
+        flex-direction: column;
+        padding: 20px;
+    }
+
+    .main-nav.open {
+        display: flex;
+    }
+
+    .hero-content {
+        bottom: 120px;
+        width: 85%;
+    }
+
+    .movie-card,
+    .catalog-grid>.movie-card {
+        flex: 0 0 calc((100% - 40px) / 3);
+    }
+}
+
+/* 4. Tablets e Telas Médias (até 768px) */
 @media (max-width: 768px) {
     .detail-container {
         flex-direction: column;
         align-items: center;
         gap: 25px;
     }
+
     .detail-poster-wrap {
         width: 220px;
         flex: 0 0 auto;
     }
-}
 
-.catalog-grid > .movie-card {
-    width: 100%;
-    min-width: 0;
- }
-/* ============================================================
-   11.  BARRA DE PESQUISA E BOTAO DE RETORNO
-   ============================================================ */
+    .footer-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
 
-/*icone do botao*/
-#back-to-top {
-  padding: 12px;
-}
-/*barra de pesquisa*/
-.header-actions {
-  margin-left: auto;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.header-search {
-  display: none;
-  flex: 0 1 280px;
-  min-width: 150px;
-  max-width: 320px;
-  height: 42px;
-  align-items: stretch;
-  border-radius: 6px;
-  overflow: hidden;
-}
-
-.header-search input {
-  width: 100%;
-  min-width: 0;
-  min-height: 0;
-  border: 0;
-  border-radius: 0;
-  padding: 0 14px;
-  background: #eee;
-  color: #171717;
-}
-
-.header-search-submit {
-  width: 52px;
-  min-width: 52px;
-  height: 42px;
-  padding: 0;
-  border-radius: 0;
-}
-
-.header-search-submit .icon-svg {
-  width: 22px;
-  height: 22px;
-}
-
-/* ============================================================
-   12. RESPONSIVIDADE (MEDIA QUERIES)
-   ============================================================ */
-/* 1. Telas Grandes (Desktop amplo) */
-@media (min-width: 1200px) {
-  .site-header {
-    padding-left: max(32px, calc((100vw - 1600px) / 2));
-    padding-right: max(40px, calc((100vw - 1700px) / 2));
-  }
-}
-
-/* 2. Telas Médias e Desktop (a partir de 700px) */
-@media (min-width: 700px) {
-  .main-nav {
-    gap: clamp(12px, 1.3vw, 22px);
-    font-size: clamp(0.92rem, 1.05vw, 1.12rem);
-    letter-spacing: 0.03em;
-    text-transform: uppercase;
-  }
-
-  .header-search {
-    display: flex;
-  }
-
-  .header-actions [data-action="ir-busca"],
-  .header-actions [data-action="search"] {
-    display: none !important;
-  }
-
-  .filterbar:has(#input-busca) {
-    display: none;
-  }
-}
-
-/* 3. Tablets e Notebooks Menores (até 900px) */
-@media (max-width: 900px) {
-  .site-header { 
-    padding: 0 16px; 
-  }
-  
-  .mobile-menu { 
-    display: inline-flex !important; 
-  }
-  
-  .main-nav {
-    display: none;
-    position: absolute;
-    top: 76px; 
-    left: 0; 
-    right: 0;
-    background: var(--panel);
-    flex-direction: column;
-    padding: 20px;
-  }
-  
-  .main-nav.open { 
-    display: flex; 
-  }
-
-  .hero-content { 
-    bottom: 120px; 
-    width: 85%; 
-  }
-  
-  .movie-card, 
-  .catalog-grid > .movie-card {
-    flex: 0 0 calc((100% - 40px) / 3);
-  }
-}
-
-/* 4. Tablets e Telas Médias (até 768px) */
-@media (max-width: 768px) {
-  .detail-container {
-    flex-direction: column;
-    align-items: center;
-    gap: 25px;
-  }
-  
-  .detail-poster-wrap {
-    width: 220px;
-    flex: 0 0 auto;
-  }
-
-  .footer-grid {
-    grid-template-columns: 1fr;
-    gap: 30px;
-  }
-  
-  .footer-bottom {
-    flex-direction: column;
-    text-align: center;
-  }
+    .footer-bottom {
+        flex-direction: column;
+        text-align: center;
+    }
 }
 
 /* 5. Mobile Médio (até 700px) */
 @media (max-width: 700px) {
-  .header-search {
-    display: none !important;
-  }
+    .header-search {
+        display: none !important;
+    }
 
-  .header-actions [data-action="ir-busca"],
-  .header-actions [data-action="search"] {
-    display: inline-flex !important;
-  }
+    .hero-menu {
+        left: 16px;
+        right: 16px;
+        overflow-x: auto;
+        overflow-y: hidden;
+        padding: 4px 2px 8px;
+        scrollbar-width: none;
+        -webkit-overflow-scrolling: touch;
+        touch-action: pan-x pan-y;
+    }
 
-  .catalog-search-wrap {
-    flex: 0 0 100%;
-    width: 100%;
-    min-width: 0;
-  }
+    .hero-menu::-webkit-scrollbar {
+        display: none;
+    }
 
-  .catalog-grid {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 18px 12px;
-  }
+    .hero-menu-item {
+        flex: 0 0 210px;
+    }
 
-  .catalog-grid > .movie-card {
-    width: 100%;
-    min-width: 0;
-  }
+    .hero-pause {
+        flex: 0 0 auto;
+    }
+
+    .header-actions [data-action="ir-busca"],
+    .header-actions [data-action="search"] {
+        display: inline-flex !important;
+    }
+
+    .catalog-search-wrap {
+        flex: 0 0 100%;
+        width: 100%;
+        min-width: 0;
+    }
+
+    .catalog-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 18px 12px;
+    }
+
+    .catalog-grid>.movie-card {
+        width: 100%;
+        min-width: 0;
+    }
 }
 
 /* 6. Celulares Pequenos (até 600px) */
 @media (max-width: 600px) {
-  .hero { 
-    min-height: 500px; 
-    padding: 70px 16px 50px; 
-  }
-  
-  .hero-title { 
-    font-size: 1.8rem; 
-  }
-  
-  .hero-menu-item img { 
-    display: none; 
-  }
-
-  .site-header {
-    gap: 10px;
-  }
-
-  .site-header .logo img {
-    width: 118px;
-    height: 36px;
-  }
-
-  .header-actions {
-    gap: 6px;
-  }
-
-  .profile-button {
-    width: 40px;
-    padding: 10px;
-  }
-
-  .profile-button span {
-    display: none;
-  }
-  
-  .movie-card, 
-  .catalog-grid > .movie-card {
-    flex: 0 0 calc((100% - 16px) / 2);
-  }
-  
-  .profile-page {
-    flex-direction: column;
-    padding: 90px 16px 40px;
-  }
-}
-
-/* Animação de pulso contínuo do botao que sobe ao topo */
-@keyframes pulsar-botao {
-    0% {
-        transform: scale(1);
-        box-shadow: 0 0 0 0 rgba(237, 0, 22, 0.7);
+    .hero {
+        min-height: 500px;
+        padding: 70px 16px 50px;
     }
-    70% {
-        transform: scale(1.08);
-        box-shadow: 0 0 0 14px rgba(237, 0, 22, 0);
+
+    .hero-title {
+        font-size: 1.8rem;
     }
-    100% {
-        transform: scale(1);
-        box-shadow: 0 0 0 0 rgba(237, 0, 22, 0);
+
+    .hero-menu-item img {
+        display: none;
+    }
+
+    .site-header {
+        gap: 10px;
+    }
+
+    .site-header .logo img {
+        width: 118px;
+        height: 36px;
+    }
+
+    .header-actions {
+        gap: 6px;
+    }
+
+    .profile-button {
+        width: 40px;
+        padding: 10px;
+    }
+
+    .profile-button span {
+        display: none;
+    }
+
+    .movie-card,
+    .catalog-grid>.movie-card {
+        flex: 0 0 calc((100% - 16px) / 2);
+    }
+
+    .profile-page {
+        flex-direction: column;
+        padding: 90px 16px 40px;
     }
 }
