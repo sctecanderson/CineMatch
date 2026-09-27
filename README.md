@@ -17,11 +17,11 @@
 
 ---
 
-## 📌 Links Obrigatórios de Entrega (AVA)
+## 📌 Links de Entrega (AVA)
 
-* 🔗 **Repositório GitHub:** `https://github.com/sctecanderson/CineMatch`
-* 📋 **Quadro Kanban (Trello):** [Acesse o Quadro do Projeto](https://trello.com/b/xFGqs6B4/cinematch-projeto-web) *(insira o link público do seu Trello)*
-* 🎥 **Vídeo de Apresentação (Até 7 min):** [Assista à Demonstração no YouTube / Google Drive](https://...) *(insira o link do vídeo)*
+* 🔗 **Repositório GitHub:**  [Acesse o CINEMATCH no seu Navegador](https://sctecanderson.github.io/CineMatch/)
+* 📋 **Quadro Kanban (Trello):** [Acesse o Quadro do Projeto](https://trello.com/b/xFGqs6B4/cinematch-projeto-web) 
+* 🎥 **Vídeo de Apresentação (Até 7 min):** [Assista à Demonstração no YouTube / Google Drive](https://...) 
 
 ---
 
@@ -36,8 +36,17 @@ A aplicação web coleta o perfil da pessoa usuária (nome, idade e gêneros fav
 ## 📸 Telas do Projeto
 
 <div align="center">
-  <img src="assets/fundo-conta.jpg" alt="Tela de criação de perfil e seleção de gêneros" width="48%">
-  <img src="assets/cartazes/banners/web-home-doomnsday.jpg" alt="Página inicial com catálogo e recomendações" width="48%">
+  <img src="assets/readme/tela-login.jpg" alt="Tela de criação de perfil e seleção de gêneros" width="28%">
+  <img src="assets/readme/tela-home.jpg" alt="Página inicial" width="28%">
+  <img src="assets/readme/tela-detalhes.jpg" alt="Página de detalhes" width="28%">
+  <img src="assets/readme/tela-footer.jpg" alt="Página créditos finais" width="28%">
+</div>
+
+<div align="center">
+  <img src="assets/readme/cel-login.jpg" alt="Tela de criação de perfil e seleção de gêneros" width="28%">
+  <img src="assets/readme/cel-home.jpg" alt="Página inicial" width="28%">
+  <img src="assets/readme/cel-cards.jpg" alt="Página de detalhes" width="28%">
+  <img src="assets/readme/cel-footer.jpg" alt="Página créditos finais" width="28%">
 </div>
 
 <p align="center"><em>Interface com tela de criação de perfil personalizada e catálogo cinematográfico.</em></p>
