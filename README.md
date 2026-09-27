@@ -35,22 +35,22 @@ A aplicação web coleta o perfil da pessoa usuária (nome, idade e gêneros fav
 
 ## 📸 Telas do Projeto
 
-<div align="center">
-  <img src="assets/readme/tela-login.jpg" alt="Tela de criação de perfil e seleção de gêneros" width="28%">
-  <img src="assets/readme/tela-home.jpg" alt="Página inicial" width="28%">
-  <img src="assets/readme/tela-detalhes.jpg" alt="Página de detalhes" width="28%">
-  <img src="assets/readme/tela-footer.jpg" alt="Página créditos finais" width="28%">
-</div>
+<table>
+  <tr>
+    <td><img src="assets/readme/tela-login.jpg" alt="Tela de criação de perfil" width="150"></td>
+    <td><img src="assets/readme/tela-home.jpg" alt="Página inicial" width="150"></td>
+    <td><img src="assets/readme/tela-detalhes.jpg" alt="Página de detalhes" width="150"></td>
+    <td><img src="assets/readme/tela-footer.jpg" alt="Rodapé do site" width="150"></td>
+  </tr>
+  <tr>
+    <td><img src="assets/readme/cel-login.png" alt="Perfil no celular" width="150"></td>
+    <td><img src="assets/readme/cel-home.png" alt="Página inicial no celular" width="150"></td>
+    <td><img src="assets/readme/cel-cards.png" alt="Catálogo no celular" width="150"></td>
+    <td><img src="assets/readme/cel-footer.png" alt="Rodapé no celular" width="150"></td>
+  </tr>
+</table>
 
-<div align="center">
-  <img src="assets/readme/cel-login.jpg" alt="Tela de criação de perfil e seleção de gêneros" width="28%">
-  <img src="assets/readme/cel-home.jpg" alt="Página inicial" width="28%">
-  <img src="assets/readme/cel-cards.jpg" alt="Página de detalhes" width="28%">
-  <img src="assets/readme/cel-footer.jpg" alt="Página créditos finais" width="28%">
-</div>
-
-<p align="center"><em>Interface com tela de criação de perfil personalizada e catálogo cinematográfico.</em></p>
-
+<p align="center"><em>Versões para desktop e celular do CineMatch.</em></p>
 ---
 
 ## ✨ Funcionalidades Principais
