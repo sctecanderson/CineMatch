@@ -17,7 +17,7 @@
 
 ---
 
-<h2align="center">## 📌 Links de Entrega (AVA)</h2>
+## 📌 Links de Entrega (AVA)
 
 * 🔗 **Repositório GitHub:**  [Acesse o CINEMATCH no seu Navegador](https://sctecanderson.github.io/CineMatch/)
 * 📋 **Quadro Kanban (Trello):** [Acesse o Quadro do Projeto](https://trello.com/b/xFGqs6B4/cinematch-projeto-web) 
